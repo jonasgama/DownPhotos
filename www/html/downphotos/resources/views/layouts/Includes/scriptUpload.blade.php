@@ -68,7 +68,7 @@
              
           })
           .bind('fileuploadprogressall', function (e, data) {
-              setInterval(function(){ window.location.reload(); }, 3000);
+            setInterval(function(){ window.location.reload(); }, 3000);
               
           });
     
@@ -85,14 +85,4 @@ $('#select_all').change(function() {
         checkboxes.prop('checked', false);
     }
 });
-</script>
-
-<script>
-$(document).ready(function () {
-    $('.btn btn-xs btn-default').on('click',function(){
-      alert("clicado");
-      document.getElementsByClassName("btn btn-xs btn-default").value = $(this).attr('data-id');
-      console.log($(this).attr('data-id'));
-    });
-  });
 </script>

@@ -29,12 +29,13 @@ Route::get('/galeria', 'ProdutoController@create');
 
 Route::post('/upload', 'UploadController@upload');
 
-Route::get('usuario/{userId}/remover/{fileId}', [ 'as' => 'files.destroy', 'uses' => 'FilesController@destroy'])->middleware('auth');
-Route::get('usuario/baixar', ['as' => 'files.download', 'uses' => 'FilesController@downloadN'])->middleware('auth');
-Route::get('usuario/preview/{fileId}', ['as' => 'files.preview', 'uses' => 'FilesController@preview'])->middleware('auth');
-Route::get('usuario/previewLarge/{fileId}', ['as' => 'files.previewLarge', 'uses' => 'FilesController@previewLarge'])->middleware('auth');
-Route::get('usuario/previewMedium/{fileId}', ['as' => 'files.previewMedium', 'uses' => 'FilesController@previewMedium'])->middleware('auth');
-Route::post('/actions', ['as' => 'files.actions', 'uses' => 'FilesController@actions'])->middleware('auth');
-Route::post('/cancela', ['as' => 'files.cancela', 'uses' => 'FilesController@cancela'])->middleware('auth');
-Route::post('/fotos/editar', ['as' => 'files.editar', 'uses' => 'FilesController@editarFoto'])->middleware('auth');
+Route::get('usuario/{userId}/remover/{fileId}', [ 'as' => 'Imagem.destroy', 'uses' => 'ImagemController@destroy'])->middleware('auth');
+Route::get('usuario/baixar', ['as' => 'Imagem.download', 'uses' => 'ImagemController@downloadN'])->middleware('auth');
+Route::get('usuario/preview/{fileId}', ['as' => 'Imagem.preview', 'uses' => 'ImagemController@preview'])->middleware('auth');
+Route::get('usuario/previewLarge/{fileId}', ['as' => 'Imagem.previewLarge', 'uses' => 'ImagemController@previewLarge'])->middleware('auth');
+Route::get('usuario/previewMedium/{fileId}', ['as' => 'Imagem.previewMedium', 'uses' => 'ImagemController@previewMedium'])->middleware('auth');
+Route::post('/actions', ['as' => 'Imagem.actions', 'uses' => 'ImagemController@actions'])->middleware('auth');
+Route::post('/cancela', ['as' => 'Imagem.cancela', 'uses' => 'ImagemController@cancela'])->middleware('auth');
+Route::get('/fotos/editar/{fileID}', ['as' => 'Imagem.editarPage', 'uses' => 'ImagemController@editarFoto'])->middleware('auth');
+Route::post('/fotos/editar/dados', ['as' => 'Imagem.editarDadosImagem', 'uses' => 'ImagemController@editarDadosFoto'])->middleware('auth');
 

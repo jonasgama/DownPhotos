@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
-use App\Files;
+use App\Imagem;
 use Image;
 
 class UsuarioController extends Controller
@@ -52,11 +52,11 @@ class UsuarioController extends Controller
         
 
         $user = Auth::user();
-        //$files = $user->files->take(1);
-        $files = Files::where('user_id', '=', $user->id)->paginate(5);
-        //$files = Files::all();
+        //$Imagem = $user->Imagem->take(1);
+        $files = Imagem::where('user_id', '=', $user->id)->paginate(5);
+        //$Imagem = Imagem::all();
 
-        //dd($files);
+        //dd($Imagem);
 
         return view('layouts.usuario.upload', compact('user', 'files'));
     }

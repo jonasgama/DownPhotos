@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Files;
+use App\Imagem;
 
 class User extends Authenticatable
 {
@@ -21,7 +21,7 @@ class User extends Authenticatable
     public function files(){
 
 
-    	return $this->hasMany(Files::class); 
+    	return $this->hasMany(Imagem::class); 
     }
 
 }

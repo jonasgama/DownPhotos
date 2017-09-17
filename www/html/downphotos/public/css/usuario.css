@@ -70,7 +70,7 @@ body > div.main-1 > div.container > div > form > div > table > thead > tr > td >
 
 
 
-body > div.main-1 > div.container > div > form > div.row.col-md-2.col-md-offset-0 > div{
+.row.col-md-2.col-md-offset-0 > div{
   font-style: normal;
   margin-right: 0%;
   margin-bottom: 20%;
@@ -84,14 +84,14 @@ body > div.main-1 > div.container > div > form > div.row.col-md-2.col-md-offset-
 
 }
 
-body > div.main-1 > div.container > div > form > div.row.col-md-2.col-md-offset-0 > div > ul > li > a{
+.row.col-md-2.col-md-offset-0 > div > ul > li > a{
     color: #fff;
     font-size: 14px;
     letter-spacing: 1px;
 }
 
 
-body > div.main-1 > div.container > div > form > div.row.col-md-2.col-md-offset-0 > div > ul > li > a:hover{
+.row.col-md-2.col-md-offset-0 > div > ul > li > a:hover{
   background: #f85032;
   background: -moz-linear-gradient(top,  #f85032 0%, #f16f5c 50%, #f6290c 51%, #f02f17 71%, #e73827 100%); /* FF3.6-15 */
   background: -webkit-linear-gradient(top,  #f85032 0%,#f16f5c 50%,#f6290c 51%,#f02f17 71%,#e73827 100%); /* Chrome10-25,Safari5.1-6 */
@@ -99,20 +99,20 @@ body > div.main-1 > div.container > div > form > div.row.col-md-2.col-md-offset-
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f85032', endColorstr='#e73827',GradientType=0 ); /* IE6-9 */
 }
 
-body > div.main-1 > div.container > div > form > div.row.col-md-7.col-md-offset-3.custyle{
+.row.col-md-7.col-md-offset-3.custyle{
 
 margin-left: 1%;
 
 }
 
-body > div.main-1 > div.container > div > form > div.row.col-md-7.col-md-offset-3.custyle > input.btn.btn-success.fileinput-button{
+.row.col-md-7.col-md-offset-3.custyle > input.btn.btn-success.fileinput-button{
 
 margin-bottom: 0px;
 margin-left: 20px;
 
 }
 
-body > div.main-1 > div.container > div > form > div.row.col-md-7.col-md-offset-3.custyle > input.btn.btn-danger.fileinput-button{
+.row.col-md-7.col-md-offset-3.custyle > input.btn.btn-danger.fileinput-button{
 
 margin-bottom: 0px;
 margin-left: 20px;

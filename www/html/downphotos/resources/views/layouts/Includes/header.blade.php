@@ -6,11 +6,11 @@
 					@if (Auth::check())
 					<!--<a href="#" data-toggle="popover" data-placement="right" data-content="{{ Auth::user()->email }}" title="{{ Auth::user()->sobrenome }}"><li><span class="glyphicon glyphicon-user" aria-hidden="true"></span>{{ Auth::user()->nome }}</li></a>-->
 					<a href="#"><li><span class="glyphicon glyphicon-user" aria-hidden="true"></span>{{ Auth::user()->nome }}</li></a>
-					<a href="sair"><li><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>Sair</li></a>
-					<a href="envio"><li><span class="glyphicon glyphicon-upload" aria-hidden="true"></span>Envio</li></a>
+					<a href="/sair"><li><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>Sair</li></a>
+					<a href="/envio"><li><span class="glyphicon glyphicon-upload" aria-hidden="true"></span>Envio</li></a>
 					@else
-					<a href="usuario"><li><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Entrar</li></a>
-					<a href="registro"><li><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Criar Conta</li></a>	
+					<a href="/usuario"><li><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Entrar</li></a>
+					<a href="/registro"><li><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Criar Conta</li></a>	
 					@endif	
 				</ul>
 

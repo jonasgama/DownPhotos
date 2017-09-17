@@ -7,7 +7,7 @@ use Pion\Laravel\ChunkUpload\Handler\AbstractHandler;
 use Pion\Laravel\ChunkUpload\Handler\HandlerFactory;
 use Pion\Laravel\ChunkUpload\Receiver\FileReceiver;
 use App\User;
-use App\Files;
+use App\Imagem;
 use Auth;
 use Image;
 use Validator;
@@ -80,13 +80,17 @@ class UploadController extends Controller
         $location = public_path('images/' .$fileName);
         $userId = Auth::id();
 
-        Files::create([
+        Imagem::create([
             'nome' => $fileName,
             'apelido' => $normalName,
+            'valor' => null,
+            'descricao' => null,
             'caminho' => "fotos/".$filePath,
             'user_id' => $userId
 
         ]);
+
+         //protected $fillable = ['id', 'nome', 'apelido', 'valor', 'descricao', 'caminho', 'user_id'];
 
         return response()->json([
             'path' => $filePath,

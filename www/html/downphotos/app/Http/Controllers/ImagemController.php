@@ -7,16 +7,15 @@ use Image;
 use Auth;
 use Validator;
 use ZipArchive;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-class FilesController extends Controller
+class ImagemController extends Controller
 {
-    
-
-
+    //
     public function preview($fileId){
 
 
-        $file = \App\Files::find($fileId);
+        $file = \App\Imagem::find($fileId);
      
         $finalPath = $file->caminho.'/'.$file->nome;
 
@@ -45,7 +44,7 @@ class FilesController extends Controller
      public function previewMedium($fileId){
 
 
-        $file = \App\Files::find($fileId);
+        $file = \App\Imagem::find($fileId);
      
         $finalPath = $file->caminho.'/'.$file->nome;
 
@@ -75,7 +74,7 @@ class FilesController extends Controller
 
 
 
-        $file = \App\Files::find($fileId);
+        $file = \App\Imagem::find($fileId);
      
         $finalPath = $file->caminho.'/'.$file->nome;
 
@@ -93,19 +92,23 @@ class FilesController extends Controller
     
       $userId = Auth::id();
       $request = \Request::all();
+      //dd($request);
 
       $validatorExcluir = Validator::make($request, [
 
-         'files' => 'required',
+         'Imagem' => 'required',
          'Excluir' => 'required'
 
       ]);
        $validatorBaixar = Validator::make($request, [
 
-         'files' => 'required',
+         'Imagem' => 'required',
          'Baixar' => 'required'
 
       ]);
+
+      //$request = $request['Imagem'];
+      //dd($request);
         
       if (!$validatorExcluir->fails()) {
           //dd(\Request::all());
@@ -133,7 +136,7 @@ class FilesController extends Controller
     public function destroyN($request, $userId)
     {
     
-      $request = request(['files']);
+      $request = request(['Imagem']);
       //dd($request);
 
        foreach($request as $key => $value)
@@ -156,7 +159,7 @@ class FilesController extends Controller
 
     public function destroy($userID, $fileId)
     {
-      $file = \App\Files::find($fileId);
+      $file = \App\Imagem::find($fileId);
      
       $finalPath = $file->caminho;
 
@@ -183,7 +186,7 @@ class FilesController extends Controller
      //dd($zipName);
       //dd($zipPath);
      //dd($zip);
-      $request = $request['files'];
+      $request = $request['Imagem'];
       //$zip->add(("zip");
       //dd($request);
       //dd($file);
@@ -193,7 +196,7 @@ class FilesController extends Controller
           //dd($key);
             
 
-          $file = \App\Files::find($value);
+          $file = \App\Imagem::find($value);
 
 
           $zip->addFile( $file->caminho.$file->nome, $file->nome  );
@@ -237,54 +240,36 @@ class FilesController extends Controller
 
     }
 
-    public function editarFoto()
+    public function editarFoto($fotoId)
     {
 
+       $user = Auth::user();
+       if($foto = $user->files->find($fotoId) == null){
+
+         return back()->withErrors([ 
+                
+                'Algo deu errado!' 
+            ]);
+       }
+       else{
+        $foto = $user->files->find($fotoId);
+        return view('layouts.usuario.editarImagem', compact('foto'));
+       } 
+    }
+
+    public function editarDadosFoto(){
+
+      $userId = Auth::id();
       $request = \Request::all();
-      //$request = request(['files']);
       //dd($request);
 
-      foreach($request as $key => $value)
-      {
-         foreach($value as $i){
-            $fotoId = $i;
+      $validatorExcluir = Validator::make($request, [
 
-         }
-         
-      }
-     
-      //dd($fotoId);
-
-      //as $key => $value 
-
-      $validatorEditar = Validator::make($request, [
-
-         'files' => 'required',
+         'Imagem' => 'required',
+         'Excluir' => 'required'
 
       ]);
-        
-      if ($validatorEditar->fails()) {
-          //dd(\Request::all());
-        
-           return back()->withErrors([ 
-                
-             'Clique em editar uma foto' 
-          ]);
-      }
-      else{
-
-              $user = Auth::user();
-              //dd($user);
-              $foto = $user->files->find($fotoId);
-              //dd($foto->id);
-
-             return view('layouts.usuario.editarImagem', compact('foto'));
-
-      }
 
 
-     
-
-    } 
-
+    }
 }

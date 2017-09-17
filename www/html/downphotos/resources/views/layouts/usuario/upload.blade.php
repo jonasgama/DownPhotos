@@ -50,7 +50,7 @@
       <form accept-charset="UTF-8" method="POST" action="/actions">
          {{csrf_field()}}
 
- <input type="submit" name="Baixar" value="Baixar" class='btn btn-success fileinput-button' <span class="glyphicon glyphicon-download"></span></input>
+       <input type="submit" name="Baixar" value="Baixar" class='btn btn-success fileinput-button' <span class="glyphicon glyphicon-download"></span></input>
        <input type="submit" name="Excluir" value="Excluir" class="btn btn-danger fileinput-button" <span class="glyphicon glyphicon-remove"></span></input>         
 
             <div class="progress-outer">
@@ -103,15 +103,15 @@
                           <span class="custom-control-indicator"></span>
                 </label>
             </td>
-            </form>
-          <form accept-charset="UTF-8" method="POST" action="/fotos/editar">
-            <td><button type="submit" name ="files[{{ $file->nome }}]" value="{{ $file->id }}" class="btn btn-xs btn-default">Editar</button></td>
-          </form>
-          </tr>
+      
+          <td>
+              <a href="fotos/editar/{{ $file->id }}" class="btn btn-xs btn-default">Editar</a>
+          </td>
+      </tr>
 
           @endforeach
     </table>
-    
+    </form>
    </div>
    
 
@@ -123,14 +123,73 @@
 @include('layouts.includes.scriptUpload')
 <style>
 
+.row.col-md-7.col-md-offset-3.custyle > span{
+
+background: #13c6f1;
+color: #FFF;
+border-color:transparent;
+padding: 0.4em 1.5em;
+border:none;
+   font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+
+}
+
+.row.col-md-7.col-md-offset-3.custyle > span:hover{
+
+background: #000;
+
+}
+
+.row.col-md-7.col-md-offset-3.custyle > button{
+background: #13c6f1;
+color: #FFF;
+border-color:transparent;
+padding: 0.4em 1.5em;
+border:none;
+   font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+
+}
+.row.col-md-7.col-md-offset-3.custyle > button:hover{
+
+background: #000;
+}
+
+.row.col-md-7.col-md-offset-3.custyle > input.btn.btn-success.fileinput-button{
+background: #13c6f1;
+color: #FFF;
+border-color:transparent;
+padding: 0.4em 1.5em;
+border:none;
+   font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.row.col-md-7.col-md-offset-3.custyle > input.btn.btn-success.fileinput-button:hover{
+  background: #000;
+}
 
 
- /* body > div.main-1 > div.container > div > form > div > table > tbody > tr > td > button
-  {
-    max-width: 150px;
-    max-height: 150px;
-    overflow: hidden;
-  }*/
+.row.col-md-7.col-md-offset-3.custyle > input.btn.btn-danger.fileinput-button{
+background: #13c6f1;
+color: #FFF;
+border-color:transparent;
+padding: 0.4em 1.5em;
+border:none;
+   font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.row.col-md-7.col-md-offset-3.custyle > input.btn.btn-danger.fileinput-button:hover{
+background: #000;
+}
+
+
 </style>
 
 <script>
