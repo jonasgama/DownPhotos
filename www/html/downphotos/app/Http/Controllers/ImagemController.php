@@ -259,17 +259,36 @@ class ImagemController extends Controller
 
     public function editarDadosFoto(){
 
-      $userId = Auth::id();
+      $user = Auth::user();
       $request = \Request::all();
-      //dd($request);
+     
 
-      $validatorExcluir = Validator::make($request, [
+      $validatorEditar = Validator::make($request, [
 
-         'Imagem' => 'required',
-         'Excluir' => 'required'
+         'nome' => 'required|min:4|max:10',
+         'valor' => 'required|digits_between:1,4|numeric',
+         'description' => 'required|min:11',
+         'foto' => 'required'
 
       ]);
 
+      if (!$validatorEditar->fails()) {
+        //dd($request);
+        $foto = $user->files->find($request['foto']);
+        //dd($foto);
+
+        $foto->apelido = $request['nome'];
+        $foto->valor = $request['valor'];
+        $foto->descricao = $request['description'];
+        $foto->save();
+        session()->flash('Mensagem', ' Editaro com Sucesso' );
+        return back();
+         
+      }else{
+
+          return back()->withErrors($validatorEditar);
+
+      }
 
     }
 }

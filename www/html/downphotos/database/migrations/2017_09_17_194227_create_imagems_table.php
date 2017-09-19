@@ -20,6 +20,7 @@ class CreateImagemsTable extends Migration
             $table->double('valor')->nullable();
             $table->text('descricao')->nullable();
             $table->string('caminho');
+            $table->enum('situacao', ['ag','ap', 're']);
             $table->integer('user_id');
             $table->timestamps();
         });

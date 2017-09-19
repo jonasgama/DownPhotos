@@ -70,6 +70,7 @@
                   <tr>
 
                       <th>Nome</th> 
+                      <th>Situação</th> 
                       <th>Imagem</th> 
                       <th>Enviado em</th> 
                       <th>Usuário</th>  
@@ -84,10 +85,23 @@
                   </tr>
                </thead>
             @foreach($files as $file)
+            
             <td>
-              {{str_limit($file->apelido, $limit = 5, $end = '...')}}</td>
+              {{str_limit($file->apelido, $limit = 5, $end = '...')}}
+            </td>
+            
+            <td>
+              @if($file->situacao === 'ag')
+                <p style="color:orange"><b>Aguardando Aprovação</b></p>
+              @elseif($file->situacao === 'ap')
+                 <p style="color:green"><b>Aprovado</b></p>
+              @else
+                 <p style="color:red"><b>Reprovado</b></p>
+              @endif
 
-            <td>
+            </td>
+             
+             <td>
               <!-- <img src="{{ $file->caminho}}{{$file->nome}}"/> -->
               <a data-fancybox="gallery" href="usuario/previewLarge/{{$file->id }}"><img src="usuario/preview/{{ $file->id }}"></img></a>
               <!--<img src="{{$file->caminho . $file->nome}}"/>-->

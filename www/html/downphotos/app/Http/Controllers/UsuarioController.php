@@ -56,7 +56,6 @@ class UsuarioController extends Controller
         $files = Imagem::where('user_id', '=', $user->id)->paginate(5);
         //$Imagem = Imagem::all();
 
-        //dd($Imagem);
 
         return view('layouts.usuario.upload', compact('user', 'files'));
     }
