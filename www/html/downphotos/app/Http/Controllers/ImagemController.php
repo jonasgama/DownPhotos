@@ -8,6 +8,8 @@ use Auth;
 use Validator;
 use ZipArchive;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Session;
+use URL;
 
 class ImagemController extends Controller
 {
@@ -96,13 +98,13 @@ class ImagemController extends Controller
 
       $validatorExcluir = Validator::make($request, [
 
-         'Imagem' => 'required',
+         'files' => 'required',
          'Excluir' => 'required'
 
       ]);
        $validatorBaixar = Validator::make($request, [
 
-         'Imagem' => 'required',
+         'files' => 'required',
          'Baixar' => 'required'
 
       ]);
@@ -136,7 +138,7 @@ class ImagemController extends Controller
     public function destroyN($request, $userId)
     {
     
-      $request = request(['Imagem']);
+      $request = request(['files']);
       //dd($request);
 
        foreach($request as $key => $value)
@@ -186,7 +188,7 @@ class ImagemController extends Controller
      //dd($zipName);
       //dd($zipPath);
      //dd($zip);
-      $request = $request['Imagem'];
+      $request = $request['files'];
       //$zip->add(("zip");
       //dd($request);
       //dd($file);
@@ -244,6 +246,8 @@ class ImagemController extends Controller
     {
 
        $user = Auth::user();
+       
+       //dd($request);
        if($foto = $user->files->find($fotoId) == null){
 
          return back()->withErrors([ 
@@ -266,7 +270,7 @@ class ImagemController extends Controller
       $validatorEditar = Validator::make($request, [
 
          'nome' => 'required|min:4|max:10',
-         'valor' => 'required|digits_between:1,4|numeric',
+         'valor' => 'required|numeric|min:1|max:50',
          'description' => 'required|min:11',
          'foto' => 'required'
 

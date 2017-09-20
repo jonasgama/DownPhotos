@@ -47,7 +47,7 @@ class UsuarioController extends Controller
         return redirect('usuario');
 	}
     
-    public function envio()
+    public function envio(Request $request)
     {
         
 
@@ -55,7 +55,8 @@ class UsuarioController extends Controller
         //$Imagem = $user->Imagem->take(1);
         $files = Imagem::where('user_id', '=', $user->id)->paginate(5);
         //$Imagem = Imagem::all();
-
+        $request->session()->put('url.intended',url()->full());
+        //dd($request);
 
         return view('layouts.usuario.upload', compact('user', 'files'));
     }

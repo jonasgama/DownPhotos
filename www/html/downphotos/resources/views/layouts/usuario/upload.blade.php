@@ -17,13 +17,24 @@
 
 <div class="main-1">
 <h1>Envio de Imagens</h1>
-<div class="container">
-   <div class="register">
-      <div class="clearfix"> </div>
-    <form accept-charset="UTF-8" method="POST" action="/upload">
+ <div class="container-fluid display-table">
+        <div class="row display-table-row">
+           @include('layouts.usuario.menu')
+            <div class="col-md-10 col-sm-11 display-table-cell v-align">
+                <!--<button type="button" class="slide-toggle">Slide Toggle</button> -->
+                <div class="row">
+                    <header>
+                        <div class="col-md-7">
+                            <div class="search hidden-xs hidden-sm">
+                                <input type="text" placeholder="Search" id="search">
+                            </div>
+                        </div>
+                    </header>
+                </div>
+               
+<form accept-charset="UTF-8" method="POST" action="/upload">
          {{csrf_field()}}
-          @include('layouts.usuario.menu')
-<div class="row col-md-7 col-md-offset-3 custyle">
+    <div class="row col-md-7 col-md-offset-3 custyle">
 
          
 
@@ -31,7 +42,6 @@
                <!-- The fileinput-button span is used to style the file input field as button --> 
                   <!-- The file input field used as target for the file upload widget -->
            <span class="btn btn-success fileinput-button">
-                    <i class="glyphicon glyphicon-plus"></i>
                     <span>Enviar</span>
                     <input id="fileupload" type="file" name="file" multiple>
           </span>
@@ -50,15 +60,12 @@
       <form accept-charset="UTF-8" method="POST" action="/actions">
          {{csrf_field()}}
 
-       <input type="submit" name="Baixar" value="Baixar" class='btn btn-success fileinput-button' <span class="glyphicon glyphicon-download"></span></input>
-       <input type="submit" name="Excluir" value="Excluir" class="btn btn-danger fileinput-button" <span class="glyphicon glyphicon-remove"></span></input>         
-
-            <div class="progress-outer">
-                <div class="progress">
+       <input type="submit" name="Baixar" value="Baixar" class='btn btn-success fileinput-button'></input>
+       <input type="submit" name="Excluir" value="Excluir" class="btn btn-danger fileinput-button"></input>         
+               <div class="progress">
                     <div class="progress-bar progress-bar-info progress-bar-striped active" style="width:0%; box-shadow:-1px 10px 10px rgba(91, 192, 222, 0.7);"></div>
                     <div class="progress-value"></div>
                 </div>
-            </div>
 
                <div id="mensagemErro" class="alert alert-danger alert-autocloseable-danger" hidden="hidden">
                </div>
@@ -71,19 +78,24 @@
 
                       <th>Nome</th> 
                       <th>Situação</th> 
+                      <th>Descrição</th> 
+                      <th>Valor</th> 
                       <th>Imagem</th> 
                       <th>Enviado em</th> 
                       <th>Usuário</th>  
                       <th>
-                       
+                      seleção
                       <label class="custom-control custom-checkbox">
                           <input type="checkbox" id="select_all" class="custom-control-input">
                           <span class="custom-control-indicator"></span>
                       </label>
                      </th>
+                     <th>Alterar</th>
+                     <th>Publicar</th>
                       
                   </tr>
                </thead>
+
             @foreach($files as $file)
             
             <td>
@@ -93,6 +105,8 @@
             <td>
               @if($file->situacao === 'ag')
                 <p style="color:orange"><b>Aguardando Aprovação</b></p>
+              @elseif($file->situacao === 'nv')
+                 <p><b>Novo</b></p>
               @elseif($file->situacao === 'ap')
                  <p style="color:green"><b>Aprovado</b></p>
               @else
@@ -101,6 +115,23 @@
 
             </td>
              
+            <td> 
+              @if(strlen($file->descricao) === 0)
+                <p style="color:red"><b>Pendente</b></p>
+              @else
+              {{str_limit($file->descricao, $limit = 5, $end = '...')}}
+              @endif
+               
+            </td>
+
+            <td>
+               @if(strlen($file->valor) === 0)
+                <p style="color:red"><b>Pendente</b></p>
+              @else
+              {{ $file->valor }}
+               @endif
+            </td>
+
              <td>
               <!-- <img src="{{ $file->caminho}}{{$file->nome}}"/> -->
               <a data-fancybox="gallery" href="usuario/previewLarge/{{$file->id }}"><img src="usuario/preview/{{ $file->id }}"></img></a>
@@ -119,17 +150,22 @@
             </td>
       
           <td>
-              <a href="fotos/editar/{{ $file->id }}" class="btn btn-xs btn-default">Editar</a>
+              <a href="fotos/editar/{{ $file->id }}" class="btn btn-xs btn-default">Alterar</a>
+          </td>
+           <td>
+              <a href="fotos/editar/{{ $file->id }}" class="btn btn-xs btn-default">Publicar</a>
           </td>
       </tr>
 
           @endforeach
     </table>
     </form>
-   </div>
-   
+            </div>
+        </div>
 
-   </div>
+    </div>
+
+
 </div>
   <div class="text-center">
              {{ $files->links() }}
@@ -137,76 +173,13 @@
 @include('layouts.includes.scriptUpload')
 <style>
 
-.row.col-md-7.col-md-offset-3.custyle > span{
 
-background: #13c6f1;
-color: #FFF;
-border-color:transparent;
-padding: 0.4em 1.5em;
-border:none;
-   font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
-
-}
-
-.row.col-md-7.col-md-offset-3.custyle > span:hover{
-
-background: #000;
-
-}
-
-.row.col-md-7.col-md-offset-3.custyle > button{
-background: #13c6f1;
-color: #FFF;
-border-color:transparent;
-padding: 0.4em 1.5em;
-border:none;
-   font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
-
-}
-.row.col-md-7.col-md-offset-3.custyle > button:hover{
-
-background: #000;
-}
-
-.row.col-md-7.col-md-offset-3.custyle > input.btn.btn-success.fileinput-button{
-background: #13c6f1;
-color: #FFF;
-border-color:transparent;
-padding: 0.4em 1.5em;
-border:none;
-   font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
-}
-
-.row.col-md-7.col-md-offset-3.custyle > input.btn.btn-success.fileinput-button:hover{
-  background: #000;
-}
-
-
-.row.col-md-7.col-md-offset-3.custyle > input.btn.btn-danger.fileinput-button{
-background: #13c6f1;
-color: #FFF;
-border-color:transparent;
-padding: 0.4em 1.5em;
-border:none;
-   font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
-}
-
-.row.col-md-7.col-md-offset-3.custyle > input.btn.btn-danger.fileinput-button:hover{
-background: #000;
-}
 
 
 </style>
 
 <script>
+
 </script>
 @endsection
 
