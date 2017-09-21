@@ -271,7 +271,7 @@ class ImagemController extends Controller
 
          'nome' => 'required|min:4|max:10',
          'valor' => 'required|numeric|min:1|max:50',
-         'description' => 'required|min:11',
+         'description' => 'required|min:11|max:50',
          'foto' => 'required'
 
       ]);
@@ -295,4 +295,71 @@ class ImagemController extends Controller
       }
 
     }
+
+    public function publicarFoto(Request $request, $fotoId)
+    {
+
+       $user = Auth::user();
+       
+       //dd($request);
+       if($foto = $user->files->find($fotoId) == null){
+
+         return back()->withErrors([ 
+                
+                'Algo deu errado!' 
+            ]);
+       }
+       else{
+        $foto = $user->files->find($fotoId);
+        return view('layouts.usuario.publicarImagem', compact('foto'));
+       } 
+     
+    }
+
+     public function publicarDadosFoto(){
+
+      $user = Auth::user();
+      $request = \Request::all();
+      //$request = $request['descrição'];
+      //dd($request['foto']);
+      $validatorPublicar = Validator::make($request, [
+         'foto' => 'required'
+      ]);
+
+
+
+      if (!$validatorPublicar->fails()) {
+        //dd($request);
+        $foto = $user->files->find($request['foto'])->toArray();
+        //dd($foto);
+        $validator = Validator::make($foto, [
+          'apelido' => 'required|min:4|max:10',
+          'valor' => 'required|numeric|min:1|max:50',
+          'descricao' => 'required|min:11|max:50'
+          ]
+        
+        );
+
+        if (!$validator->fails()) {
+          $foto = $user->files->find($request['foto']);
+          $foto->situacao = "ag";
+          $foto->save();
+          session()->flash('Mensagem', ' Enviado para Aprovação' );
+          return back();
+         }
+         else{
+            return back()->withErrors($validator);
+         }
+
+       
+         
+      }else{
+
+          return back()->withErrors($validatorPublicar);
+
+      }
+
+    }
+
+  
 }

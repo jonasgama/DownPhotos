@@ -28,6 +28,7 @@
                      <a data-fancybox="gallery" href="/usuario/previewLarge/{{$foto->id }}"><img src="/usuario/previewMedium/{{ $foto->id }}" ></img></a>
                      
                       <a href="{{Session::get('url.intended')}}">Voltar</a>
+                       <a href="/foto/publicar/{{ $foto->id }}">Manter</a>
                   </div>
 
                   
@@ -45,9 +46,12 @@
                   </div>
 
                   <button id="right" type="submit" name="foto" value="{{$foto->id }}">Editar</button>
+                  </form>
+
+                 
                   <div class="clearfix"> </div>
                   </div>
-               </form>
+               
             
 
           </div>

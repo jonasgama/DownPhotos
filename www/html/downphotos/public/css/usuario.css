@@ -829,6 +829,29 @@ position: absolute;
    background: black;
 }
 
+.col-md-6.login-left.wow.fadeInLeft > a:nth-child(5){
+background: #13c6f1;
+color: #FFF;
+border-color: transparent;
+padding: 0.4em 1.5em;
+border: none;
+font-family: inherit;
+font-size: inherit;
+line-height: inherit;
+margin-top: 311px;
+left: 100px;
+position: absolute;
+
+}
+.col-md-6.login-left.wow.fadeInLeft > a:nth-child(5):hover{
+   background: black;
+}
+
+#fix-descricao > div > div > p{
+    margin-left:50px;
+}
+
+
 #fix-descricao > div > h3{
 margin-left:50px;
 

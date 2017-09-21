@@ -150,10 +150,10 @@
             </td>
       
           <td>
-              <a href="fotos/editar/{{ $file->id }}" class="btn btn-xs btn-default">Alterar</a>
+              <a href="/fotos/editar/{{ $file->id }}" class="btn btn-xs btn-default">Alterar</a>
           </td>
            <td>
-              <a href="fotos/editar/{{ $file->id }}" class="btn btn-xs btn-default">Publicar</a>
+              <a href="/foto/publicar/{{ $file->id }}" class="btn btn-xs btn-default">Publicar</a>
           </td>
       </tr>
 

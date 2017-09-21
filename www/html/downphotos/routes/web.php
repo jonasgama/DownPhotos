@@ -38,4 +38,6 @@ Route::post('/actions', ['as' => 'Imagem.actions', 'uses' => 'ImagemController@a
 Route::post('/cancela', ['as' => 'Imagem.cancela', 'uses' => 'ImagemController@cancela'])->middleware('auth');
 Route::get('/fotos/editar/{fileID}', ['as' => 'Imagem.editarPage', 'uses' => 'ImagemController@editarFoto'])->middleware('auth');
 Route::post('/fotos/editar/dados', ['as' => 'Imagem.editarDadosImagem', 'uses' => 'ImagemController@editarDadosFoto'])->middleware('auth');
+Route::get('/foto/publicar/{fileID}', ['as' => 'Imagem.publicarImagem', 'uses' => 'ImagemController@publicarFoto'])->middleware('auth');
+Route::post('/foto/publicar/dados', ['as' => 'Imagem.publicarDadosImagem', 'uses' => 'ImagemController@publicarDadosFoto'])->middleware('auth');
 
