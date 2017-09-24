@@ -2,17 +2,22 @@
 	<div class="header" id="home">
 		<div class="container">
 			<div class="w3l_header_left">
+			<div class="dropdown">
 				<ul>
 					@if (Auth::check())
 					<!--<a href="#" data-toggle="popover" data-placement="right" data-content="{{ Auth::user()->email }}" title="{{ Auth::user()->sobrenome }}"><li><span class="glyphicon glyphicon-user" aria-hidden="true"></span>{{ Auth::user()->nome }}</li></a>-->
-					<a href="#"><li><span class="glyphicon glyphicon-user" aria-hidden="true"></span>{{ Auth::user()->nome }}</li></a>
-					<a href="/sair"><li><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>Sair</li></a>
-					<a href="/envio"><li><span class="glyphicon glyphicon-upload" aria-hidden="true"></span>Envio</li></a>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><li><span class="glyphicon glyphicon-user" aria-hidden="true"></span>{{ Auth::user()->nome }}</li></a>
+					<ul class="dropdown-menu" role="menu">
+                        <a href="/sair"><li><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>Sair</li></a>
+					    <a href="/envio"><li><span class="glyphicon glyphicon-upload" aria-hidden="true"></span>Envio</li></a>
+                    </ul>
+					
 					@else
 					<a href="/usuario"><li><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Entrar</li></a>
 					<a href="/registro"><li><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Criar Conta</li></a>	
 					@endif	
 				</ul>
+			</div>
 
 			</div>
 			<div class="clearfix"> </div>
@@ -71,3 +76,29 @@
 	</div>
 <!-- //header -->
 
+<script>
+$(document).ready(function(){
+    $(".dropdown").hover(            
+        function() {
+            $('.dropdown-menu', this).not('.in .dropdown-menu').stop( true, true ).slideDown("fast");
+            $(this).toggleClass('open');        
+        },
+        function() {
+            $('.dropdown-menu', this).not('.in .dropdown-menu').stop( true, true ).slideUp("slow");
+            $(this).toggleClass('open');       
+        }
+    );
+});
+</script>
+
+<style>
+
+#home > div > div.w3l_header_left > div > ul > ul{
+	background-color: black;
+}
+#home > div > div.w3l_header_left > div > ul > ul > a > li{
+width: 100%;
+}
+
+
+</style>
