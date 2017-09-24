@@ -1,14 +1,11 @@
-@extends('layouts.master')
-@section('content') 
-@include('layouts.includes.scriptFancyBox')
+
+
 <link href="{{ asset('css/usuario.css') }}" rel="stylesheet" />
 
-<!-- Login -->
 <div class="main-1">
    <h1>Edição: Dados da Imagem</h1>
  <div class="container-fluid display-table">
         <div class="row display-table-row">
-           @include('layouts.usuario.menu')
             <div class="col-md-10 col-sm-11 display-table-cell v-align">
                 <!--<button type="button" class="slide-toggle">Slide Toggle</button> -->
 
@@ -19,16 +16,13 @@
                   <div class="col-md-6 login-left wow fadeInLeft">
                      <div class="wow fadeInLeft">
                         <h3>Nome da Foto</h3>
-                        <input name="nome" type="text" value="{{$foto->apelido}}" placeholder="Insira o nome da foto" required/>
+                        <input name="nome" type="text" value="{{$file->apelido}}" placeholder="Insira o nome da foto" required/>
                      </div>
                      <div class="wow fadeInLeft">
                         <h3>Valor da Foto</h3>
-                        <input name="valor" type="text" value="{{$foto->valor}}" placeholder="R$" required/>
+                        <input name="valor" type="text" value="{{$file->valor}}" placeholder="R$" required/>
                      </div>
-                     <a data-fancybox="gallery" href="/usuario/previewLarge/{{$foto->id }}"><img src="/usuario/previewMedium/{{ $foto->id }}" ></img></a>
-                     
-                      <a href="{{Session::get('url.intended')}}">Voltar</a>
-                       <a href="/foto/publicar/{{ $foto->id }}">Manter</a>
+                     <a data-fancybox="gallery" href="/usuario/previewLarge/{{$file->id }}"><img src="/usuario/previewMedium/{{ $file->id }}" ></img></a>
                   </div>
 
                   
@@ -39,13 +33,14 @@
                       <div class="wow fadeInLeft">
                         <h3>Descrição</h3>
                         <div class="wow fadeInLeft">
-                        <textarea name="description" placeholder="insira descrição da sua foto" required>{{$foto->descricao}}</textarea>
+                        <textarea name="description" placeholder="insira descrição da sua foto" required>{{$file->descricao}}</textarea>
                         </div>
                      </div>  
 
                   </div>
-
-                  <button id="right" type="submit" name="foto" value="{{$foto->id }}">Editar</button>
+                  
+                  <button id="right" type="submit" name="foto" value="{{$file->id }}">Editar</button>
+                  <a href="{{Session::get('url.intended')}}">Voltar</a>
                   </form>
 
                  
@@ -62,5 +57,3 @@
 <style>
 
 </style>
-     
-@endsection

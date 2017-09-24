@@ -1,6 +1,4 @@
-@extends('layouts.master')
-@section('content') 
-@include('layouts.includes.scriptFancyBox')
+
 <link href="{{ asset('css/usuario.css') }}" rel="stylesheet" />
 
 <!-- Login -->
@@ -8,7 +6,6 @@
    <h1>Publicar Imagem</h1>
  <div class="container-fluid display-table">
         <div class="row display-table-row">
-           @include('layouts.usuario.menu')
             <div class="col-md-10 col-sm-11 display-table-cell v-align">
                 <!--<button type="button" class="slide-toggle">Slide Toggle</button> -->
 
@@ -34,9 +31,6 @@
                         @endif
                      </div>
                      <a data-fancybox="gallery" href="/usuario/previewLarge/{{$foto->id }}"><img src="/usuario/previewMedium/{{ $foto->id }}" ></img></a>
-                     
-                      <a href="{{Session::get('url.intended')}}">Voltar</a>
-                      <a href="/fotos/editar/{{ $foto->id }}">Alterar</a>
                   </div>
 
                   
@@ -58,6 +52,8 @@
                   </div>
 
                   <button id="right" type="submit" name="foto" value="{{ $foto->id }}">Publicar</button>
+                  <a href="{{Session::get('url.intended')}}">Voltar</a>
+                 
                   <div class="clearfix"></div>
                 </div>
                
@@ -111,5 +107,4 @@ box-shadow: -9px 10px 5px -4px rgba(0,0,0,0.44)
 
 </style>
      
-@endsection
 

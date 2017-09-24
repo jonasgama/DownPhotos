@@ -115,7 +115,7 @@ class ImagemController extends Controller
       if (!$validatorExcluir->fails()) {
           //dd(\Request::all());
           $this -> destroyN($request, $userId);
-          return redirect()->back();
+          return redirect('/envio');
       }
       if (!$validatorBaixar->fails()) {
           //dd(\Request::all());
@@ -248,7 +248,7 @@ class ImagemController extends Controller
        $user = Auth::user();
        
        //dd($request);
-       if($foto = $user->files->find($fotoId) == null){
+       if($file = $user->files->find($fotoId) == null){
 
          return back()->withErrors([ 
                 
@@ -256,8 +256,8 @@ class ImagemController extends Controller
             ]);
        }
        else{
-        $foto = $user->files->find($fotoId);
-        return view('layouts.usuario.editarImagem', compact('foto'));
+        $file = $user->files->find($fotoId);
+        return view('layouts.usuario.editarImagem', compact('file'));
        } 
     }
 

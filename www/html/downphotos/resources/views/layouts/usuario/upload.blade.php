@@ -32,6 +32,8 @@
                     </header>
                 </div>
                
+
+
 <form accept-charset="UTF-8" method="POST" action="/upload">
          {{csrf_field()}}
     <div class="row col-md-7 col-md-offset-3 custyle">
@@ -150,10 +152,10 @@
             </td>
       
           <td>
-              <a href="/fotos/editar/{{ $file->id }}" class="btn btn-xs btn-default">Alterar</a>
+              <a href="{{ route('Imagem.editarPage', $file->id) }}" role="button" data-toggle="modal" data-target="#yourModal" class="btn btn-xs btn-default">Alterar</a>
           </td>
            <td>
-              <a href="/foto/publicar/{{ $file->id }}" class="btn btn-xs btn-default">Publicar</a>
+              <a href="/foto/publicar/{{ $file->id }}" data-toggle="modal" data-target="#yourModal" class="btn btn-xs btn-default">Publicar</a>
           </td>
       </tr>
 
@@ -170,11 +172,33 @@
   <div class="text-center">
              {{ $files->links() }}
     </div>
+
 @include('layouts.includes.scriptUpload')
+
+
+  <!--teste de modal -->
+               <div class="modal fade" id="yourModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                  @include('layouts.usuario.editarImagem')
+                </div>
+              </div>
+            </div>
+
+
+
+
 <style>
 
+#yourModal > div{
+  width: 1200px;
+}
 
+.progress{
 
+width: 850px;
+
+}
 
 </style>
 

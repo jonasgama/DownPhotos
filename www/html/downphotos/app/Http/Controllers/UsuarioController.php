@@ -54,10 +54,9 @@ class UsuarioController extends Controller
         $user = Auth::user();
         //$Imagem = $user->Imagem->take(1);
         $files = Imagem::where('user_id', '=', $user->id)->paginate(5);
-        //$Imagem = Imagem::all();
-        $request->session()->put('url.intended',url()->full());
+        //$Imagem = Imagem::all()
         //dd($request);
-
+        $request->session()->put('url.intended',url()->full());
         return view('layouts.usuario.upload', compact('user', 'files'));
     }
 
