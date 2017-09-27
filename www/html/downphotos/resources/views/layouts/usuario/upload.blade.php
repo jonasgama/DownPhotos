@@ -151,8 +151,8 @@
                 </label>
             </td>
       
-          <td>
-              <a href="{{ route('Imagem.editarPage', $file->id) }}" role="button" data-toggle="modal" data-target="#yourModal" class="btn btn-xs btn-default">Alterar</a>
+          <td> 
+              <a href="/fotos/editar/{{ $file->id }}" class="alterar" href="#" role="button" data-toggle="modal" data-target="#yourModal">Alterar</a>
           </td>
            <td>
               <a href="/foto/publicar/{{ $file->id }}" data-toggle="modal" data-target="#yourModal" class="btn btn-xs btn-default">Publicar</a>
@@ -176,14 +176,17 @@
 @include('layouts.includes.scriptUpload')
 
 
+
   <!--teste de modal -->
-               <div class="modal fade" id="yourModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+               <div class="modal fade" id="yourModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                  @include('layouts.usuario.editarImagem')
-                </div>
-              </div>
-            </div>
+                  <div class="modal-content">                
+                     
+
+                 
+                              </div>
+                          </div>
+                      </div>
 
 
 
@@ -201,9 +204,12 @@ width: 850px;
 }
 
 </style>
-
 <script>
 
+
+
 </script>
+
+
 @endsection
 

@@ -10,6 +10,7 @@ use ZipArchive;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Session;
 use URL;
+use Response;
 
 class ImagemController extends Controller
 {
@@ -93,6 +94,7 @@ class ImagemController extends Controller
 
     
       $userId = Auth::id();
+
       $request = \Request::all();
       //dd($request);
 
@@ -109,9 +111,7 @@ class ImagemController extends Controller
 
       ]);
 
-      //$request = $request['Imagem'];
-      //dd($request);
-        
+
       if (!$validatorExcluir->fails()) {
           //dd(\Request::all());
           $this -> destroyN($request, $userId);
@@ -134,7 +134,11 @@ class ImagemController extends Controller
                 'Selecione para efeutar as ações' 
             ]);
       }
-    }
+     
+         
+
+
+      }
     public function destroyN($request, $userId)
     {
     
@@ -245,7 +249,7 @@ class ImagemController extends Controller
     public function editarFoto($fotoId)
     {
 
-       $user = Auth::user();
+        $user = Auth::user();
        
        //dd($request);
        if($file = $user->files->find($fotoId) == null){
@@ -257,7 +261,9 @@ class ImagemController extends Controller
        }
        else{
         $file = $user->files->find($fotoId);
+        //return view('layouts.usuario.editarImagem', compact('file'));
         return view('layouts.usuario.editarImagem', compact('file'));
+        //return $file;
        } 
     }
 
@@ -296,7 +302,7 @@ class ImagemController extends Controller
 
     }
 
-    public function publicarFoto(Request $request, $fotoId)
+    public function publicarFoto($fotoId)
     {
 
        $user = Auth::user();
@@ -360,6 +366,8 @@ class ImagemController extends Controller
       }
 
     }
+
+
 
   
 }
