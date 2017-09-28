@@ -137,6 +137,74 @@ right: 20px;
     margin-left:0px;
 }
 
+body > div.main-1 > div.col-md-10.col-sm-11.display-table-cell.v-align > div:nth-child(2) > section > div > div > div > div > form:nth-child(1) > span{
+        left: 577px;
+}
+body > div.main-1 > div.col-md-10.col-sm-11.display-table-cell.v-align > div:nth-child(2) > section > div > div > div > div > form:nth-child(2) > button{
+ margin-left: 0px;
+    margin-top: -2-;
+    margin-top: -20;
+    margin-top: 0px;
+    position: absolute;
+    left: 700px;
+    top: 6px;   
+}
+body > div.main-1 > div.col-md-10.col-sm-11.display-table-cell.v-align > div:nth-child(2) > section > div > div > div > div > form:nth-child(3) > input:nth-child(2){
+        position: absolute;
+    margin-top: 0px;
+    top: 6px;
+    right: 0px;
+    left: 810px;
+}
+body > div.main-1 > div.col-md-10.col-sm-11.display-table-cell.v-align > div:nth-child(2) > section > div > div > div > div > form:nth-child(3) > input:nth-child(3){
+        position: absolute;
+    top: 6px;
+    margin-top: 0px;
+}
+#fileupload{
+left:0px;
+position: right;
+}
+
+form:nth-child(1) > span{
+background: #13c6f1;
+color: #FFF;
+border-color:transparent;
+padding: 0.4em 1.5em;
+border:none;
+font-family: inherit;
+font-size: inherit;
+line-height: inherit;
+position:right;
+
+
+}
+form:nth-child(1) > span:hover{
+background: black;
+
+}
+
+.bluebt{
+background: #13c6f1;
+color: #FFF;
+border-color:transparent;
+padding: 0.4em 1.5em;
+border:none;
+font-family: inherit;
+font-size: inherit;
+line-height: inherit;
+margin-top: 20px;
+right: 20px;
+
+}
+.bluebt:hover{
+background: black;
+
+}
+
+
+
+
 #right{
     margin-left:45px;
 }
