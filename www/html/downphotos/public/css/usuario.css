@@ -621,8 +621,6 @@ header {
 }
 
 .navi a {
-    border-bottom: 1px solid #0d172e;
-    border-top: 1px solid #0d172e;
     color: #ffffff;
     display: block;
     font-size: 17px;

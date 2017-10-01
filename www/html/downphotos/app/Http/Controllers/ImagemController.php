@@ -297,7 +297,7 @@ class ImagemController extends Controller
       }else{
 
           return back()->withErrors($validatorEditar);
-
+            //return redirect('/fotos/editar/19');
       }
 
     }
@@ -364,6 +364,80 @@ class ImagemController extends Controller
           return back()->withErrors($validatorPublicar);
 
       }
+
+    }
+
+    public function filtro($filtro)
+    {
+        $user = Auth::user();
+       
+       
+
+       if($filtro == 'Novos'){
+         $filtro = 'nv';
+       }
+       else if($filtro == 'Aguardando'){
+        $filtro = 'ag';
+
+       }
+       else if($filtro == 'Aprovados'){
+
+        $filtro = 'ap';
+       }
+       else if($filtro == 'Reprovados'){
+
+        $filtro = 're';
+       }
+       else{
+          return back()->withErrors([ 
+                
+                'Filtro não existe' 
+            ]);
+       }
+       
+
+
+        $files = \App\Imagem::where('user_id', '=', $user->id);
+        $files =  $files->where('situacao', '=', $filtro)->paginate(5);
+        //dd($files);
+
+        return view('layouts.usuario.upload', compact('user', 'files'));
+
+    }
+
+    public function pesquisar(){
+      $userId = Auth::id();
+
+      $request = \Request::all();
+      
+
+      $validatorPesquisar = Validator::make($request, [
+
+         'pesquisa' => 'required'
+
+      ]);
+
+       if (!$validatorPesquisar->fails()) {
+
+
+        $files = \App\Imagem::where('apelido', 'like', '%'.$request['pesquisa'].'%')
+        ->orWhere('valor','LIKE','%'.$request['pesquisa'].'%')
+        ->orWhere('descricao','LIKE','%'.$request['pesquisa'].'%')
+        ->orWhere('situacao','LIKE','%'.$request['pesquisa'].'%')
+        ->paginate(5);
+        //dd($files);
+        $filtroON = "Resultado da Pesquisa: ".$request['pesquisa'];
+
+       }else{
+         return back()->withErrors([ 
+                
+                'Não Localizado' 
+            ]);
+
+       }
+
+      return view('layouts.usuario.upload', compact('user', 'files', 'filtroON'));
+
 
     }
 

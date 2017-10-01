@@ -40,3 +40,6 @@ Route::get('/fotos/editar/{fileID}', ['as' => 'Imagem.editarPage', 'uses' => 'Im
 Route::post('/fotos/editar/dados', ['as' => 'Imagem.editarDadosImagem', 'uses' => 'ImagemController@editarDadosFoto'])->middleware('auth');
 Route::get('/foto/publicar/{fileID}', ['as' => 'Imagem.publicarImagem', 'uses' => 'ImagemController@publicarFoto'])->middleware('auth');
 Route::post('/foto/publicar/dados', ['as' => 'Imagem.publicarDadosImagem', 'uses' => 'ImagemController@publicarDadosFoto'])->middleware('auth');
+
+Route::get('/foto/filtrar/{filtro}', ['as' => 'Imagem.filtrarImagem', 'uses' => 'ImagemController@filtro'])->middleware('auth');
+Route::post('/foto/pesquisar', ['as' => 'Imagem.pesquisarImagem', 'uses' => 'ImagemController@pesquisar'])->middleware('auth');

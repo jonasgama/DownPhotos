@@ -4,12 +4,50 @@
                 </div>
                 <div class="navi">
                     <ul>
-                        <li class="active"><a href="#"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
-                        <li><a href="#"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Workflow</span></a></li>
-                        <li><a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Statistics</span></a></li>
+                        <li class="active"><a href="/envio"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Imagens</span></a></li>
+                        <li class="row toggle" id="dropdown-detail-1" data-toggle="detail-1"><a href="javascript:void(0)"><i class="glyphicon glyphicon-filter" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Filtros</span></a></li>
+                            
+                            <div id="detail-1">
+                            <hr>
+                                  <li><a href="{{ route('Imagem.filtrarImagem', ['Novos']) }}"><span class="hidden-xs hidden-sm">Novos</span></a></li> 
+                                  <li><a href="{{ route('Imagem.filtrarImagem', ['Aguardando']) }}"><span class="hidden-xs hidden-sm">Aguardando</span></a></li> 
+                                  <li><a href="{{ route('Imagem.filtrarImagem', ['Aprovados']) }}"><span class="hidden-xs hidden-sm">Aprovados</span></a></li> 
+                                  <li><a href="{{ route('Imagem.filtrarImagem', ['Reprovados']) }}"><span class="hidden-xs hidden-sm">Reprovados</span></a></li> 
+                            </div>
+
+                        <li class="row toggle" id="dropdown-detail-2" data-toggle="detail-2"><a href="javascript:void(0)"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Statistics</span></a></li>
+
+                         <div id="detail-2">
+                            <hr>
+                                  <li><a href="#"><span class="hidden-xs hidden-sm">teste</span></a></li> 
+                            </div>
+
                         <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Calender</span></a></li>
                         <li><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Users</span></a></li>
                         <li><a href="#"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Setting</span></a></li>
                     </ul>
                 </div>
             </div>
+
+
+
+<script>
+$(document).ready(function() {
+    $('[id^=detail-]').hide();
+    $('.toggle').click(function() {
+        $input = $( this );
+        $target = $('#'+$input.attr('data-toggle'));
+        $target.slideToggle();
+    });
+});
+
+
+</script>
+
+<style>
+#detail-1 > li > a{
+padding-top:0px;
+padding-bottom: 0px;
+}
+
+</style>

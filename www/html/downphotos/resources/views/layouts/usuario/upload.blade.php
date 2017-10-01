@@ -24,10 +24,18 @@
                     <header>
                         <div class="col-md-7">
                             <div class="search hidden-xs hidden-sm">
-                                <input type="text" placeholder="Search" id="search">
+                               <form method="post" action="/foto/pesquisar">
+                                  <input type="text" name="pesquisa" placeholder="Pesquisar Aqui" id="search">
+                              </form>
                             </div>
                         </div>
                     </header>
+                    @if(!empty($filtroON))
+                    <ul class="list-inline">
+                        <li><a href="/envio"><span class="glyphicon glyphicon-remove"></span></a> </li>
+                        <li>{{$filtroON}}</li>
+                    </ul>
+                   @endif
                 </div>
       
       
@@ -45,6 +53,7 @@
         <div class="panel panel-default">
           <div class="panel-body">
             <div class="table-container">
+
 <form accept-charset="UTF-8" method="POST" action="/upload">
    {{csrf_field()}}
    <!-- The fileinput-button span is used to style the file input field as button --> 
@@ -108,19 +117,19 @@
               </td>
                     <td>
                       <div class="media">
-                        <a data-fancybox="gallery" href="usuario/previewLarge/{{$file->id }}" class="pull-left">
-                          <img src="usuario/preview/{{ $file->id }}" class="media-photo">
+                        <a data-fancybox="gallery" href="/usuario/previewLarge/{{$file->id }}" class="pull-left">
+                          <img src="/usuario/preview/{{ $file->id }}" class="media-photo">
                         </a>
                         <div class="media-body">
                           <h4 class="title">
-                           {{str_limit($file->apelido, $limit = 5, $end = '...')}}
+                           {{str_limit($file->apelido, $limit = 10, $end = '...')}}
                           </h4>
                           <p class="summary">
 
                               @if(strlen($file->descricao) === 0)
                                 <p style="color:red"><b>Pendente</b></p>
                               @else
-                              {{str_limit($file->descricao, $limit = 20, $end = '...')}}
+                              {{str_limit($file->descricao, $limit = 25, $end = '...')}}
                               @endif
 
                           </p>
@@ -197,6 +206,25 @@ width: 950px;
 
 body > div.main-1 > div.col-md-10.col-sm-11.display-table-cell.v-align > div > section > div > div > div > div > form:nth-child(3) > table > tbody:nth-child(3) > tr:nth-child(1) > td:nth-child(2){
 width: 320px;
+}
+
+
+#pesquisar{
+  left: 600px;
+width: 90px;
+height: 40px;
+color:white;
+background: #13c6f1;
+    color: #FFF;
+    border-color: transparent;
+    padding: 0.4em 1.5em;
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    position:absolute;
+
+
 }
 
 </style>

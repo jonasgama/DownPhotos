@@ -15,6 +15,9 @@ class UsuarioController extends Controller
     public function __construct() 
     {
         $this->middleware('guest')->except(['destroy', 'envio', 'dashboard']);
+
+       
+
     }
 
 	public function create(){
