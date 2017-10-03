@@ -36,6 +36,9 @@
                         <li>{{$filtroON}}</li>
                     </ul>
                    @endif
+                   @if(!empty($qt))
+                     <p><b>{{$qt}}</b></p>
+                   @endif
                 </div>
       
       

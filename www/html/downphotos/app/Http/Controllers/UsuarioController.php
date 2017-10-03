@@ -53,14 +53,20 @@ class UsuarioController extends Controller
     public function envio(Request $request)
     {
         
+   
+
+    
 
         $user = Auth::user();
         //$Imagem = $user->Imagem->take(1);
         $files = Imagem::where('user_id', '=', $user->id)->paginate(5);
+        $qt = "Quantidade de fotos: ".$files->count();
+        //dd($filtroON);
         //$Imagem = Imagem::all()
         //dd($request);
         $request->session()->put('url.intended',url()->full());
-        return view('layouts.usuario.upload', compact('user', 'files'));
+
+        return view('layouts.usuario.upload', compact('user', 'files', 'qt'));
     }
 
     public function dashboard(){

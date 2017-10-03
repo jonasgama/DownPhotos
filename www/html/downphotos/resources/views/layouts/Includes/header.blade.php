@@ -50,7 +50,7 @@
 					<nav>
 						<ul class="nav navbar-nav">
 							<li><a href="/" class="scroll hvr-bounce-to-bottom"><span class="glyphicon glyphicon-home"></span></a></li>
-							<li><a href="galeria" class="scroll hvr-bounce-to-bottom">Galeria</a></li>
+							<li><a href="/galeria" class="scroll hvr-bounce-to-bottom">Galeria</a></li>
 							<li><a href="#about" class="scroll hvr-bounce-to-bottom">About</a></li>
 							<li><a href="#team" class="scroll hvr-bounce-to-bottom">Team</a></li>
 							<li><a href="#services" class="scroll hvr-bounce-to-bottom">Services</a></li>
@@ -68,8 +68,8 @@
 					</ul> <!-- cd-header-buttons -->
 				</div>
 				<div id="cd-search" class="cd-search">
-					<form action="#" method="post">
-						<input name="Search" type="search" placeholder="Pesquisar...">
+					<form action="/galeria/pesquisar" method="post">
+						<input name="pesquisa" type="search" placeholder="Pesquisar...">
 					</form>
 				</div>
 			</div>

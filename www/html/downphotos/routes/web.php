@@ -25,7 +25,7 @@ Route::get('/preview/{fileId}', 'UsuarioController@preview')->middleware('auth')
 Route::get('/registro', 'RegistroController@create')->name('registro');
 Route::post('/registro', 'RegistroController@store'); 
 
-Route::get('/galeria', 'ProdutoController@create');
+Route::get('/galeria', 'GaleriaController@create');
 
 Route::post('/upload', 'UploadController@upload');
 
@@ -43,3 +43,5 @@ Route::post('/foto/publicar/dados', ['as' => 'Imagem.publicarDadosImagem', 'uses
 
 Route::get('/foto/filtrar/{filtro}', ['as' => 'Imagem.filtrarImagem', 'uses' => 'ImagemController@filtro'])->middleware('auth');
 Route::post('/foto/pesquisar', ['as' => 'Imagem.pesquisarImagem', 'uses' => 'ImagemController@pesquisar'])->middleware('auth');
+
+Route::post('/galeria/pesquisar', ['as' => 'Galeria.pesquisarImagem', 'uses' => 'GaleriaController@pesquisar']);

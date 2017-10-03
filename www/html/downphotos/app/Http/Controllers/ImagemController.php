@@ -406,7 +406,7 @@ class ImagemController extends Controller
     }
 
     public function pesquisar(){
-      $userId = Auth::id();
+      $user = Auth::user();
 
       $request = \Request::all();
       
@@ -419,14 +419,17 @@ class ImagemController extends Controller
 
        if (!$validatorPesquisar->fails()) {
 
+        $files = \App\Imagem::where('user_id', '=', $user->id);
 
-        $files = \App\Imagem::where('apelido', 'like', '%'.$request['pesquisa'].'%')
+        $files = $files->where('apelido', 'like', '%'.$request['pesquisa'].'%')
         ->orWhere('valor','LIKE','%'.$request['pesquisa'].'%')
         ->orWhere('descricao','LIKE','%'.$request['pesquisa'].'%')
         ->orWhere('situacao','LIKE','%'.$request['pesquisa'].'%')
         ->paginate(5);
         //dd($files);
-        $filtroON = "Resultado da Pesquisa: ".$request['pesquisa'];
+
+
+       $filtroON = "Pesquisa: ".$request['pesquisa']. ", Resultado: " .$files->count() . " items";
 
        }else{
          return back()->withErrors([ 
