@@ -2,13 +2,13 @@
 
 @section('content') 
 
-
+<link href="{{ asset('css/usuario.css') }}" rel="stylesheet" />
 
 <div class="main-1">
 	    		<div class="heading">
 	    			<h1>Imagens Publicadas</h1>
 <!--Inserir Menu aqui-->
-
+@include('layouts.galeria.menu')
 
 <div class="no-touch">
  @if(!empty($filtroON))
@@ -23,13 +23,25 @@
   @foreach ($files as $file)
     <div class="box">
       <div class="boxInner">
-         <a href="#"><img src="/usuario/previewMedium/{{ $file->id }}" class="media-photo"/></a>
+         <a href="/galeria/painel/{{ $file->id }}" data-toggle="modal" data-target="#yourModal"><img src="/galeria/preview/{{ $file->id }}" class="media-photo"/></a>
         <div class="titleBox">{{ $file->apelido }}</div>
       </div>
     </div>
    @endforeach
     </div>
-    
+ 
+
+  <div class="modal fade" id="yourModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">                
+                     
+
+                 
+                              </div>
+                          </div>
+                      </div>
+
+
 
  <div class="text-center">
         {{ $files->links() }}
@@ -39,12 +51,17 @@
 
 
 <style>
+
+#yourModal > div{
+  width: 1200px;
+}
+
     .wrap {
        overflow: hidden;
        margin: 10px;
-       margin:40px;
 
     }
+
     .box {
     float: left;
     position: relative;
@@ -56,6 +73,7 @@
     -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
     box-shadow: -4px 6px 5px #827a7a;
     }
+
     .boxInner {
        position: absolute;
        left: 10px;

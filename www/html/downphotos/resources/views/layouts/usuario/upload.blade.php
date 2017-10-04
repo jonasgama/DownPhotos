@@ -149,7 +149,7 @@
                          <p><b>Novo</b></p>
                       @elseif($file->situacao === 'ap')
                          <p style="color:green"><b>Aprovado</b></p>
-                      @else
+                      @elseif($file->situacao === 're')
                          <p style="color:red"><b>Reprovado</b></p>
                       @endif
 

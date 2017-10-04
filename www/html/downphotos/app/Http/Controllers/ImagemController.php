@@ -420,13 +420,16 @@ class ImagemController extends Controller
        if (!$validatorPesquisar->fails()) {
 
         $files = \App\Imagem::where('user_id', '=', $user->id);
+  
 
         $files = $files->where('apelido', 'like', '%'.$request['pesquisa'].'%')
         ->orWhere('valor','LIKE','%'.$request['pesquisa'].'%')
         ->orWhere('descricao','LIKE','%'.$request['pesquisa'].'%')
         ->orWhere('situacao','LIKE','%'.$request['pesquisa'].'%')
         ->paginate(5);
-        //dd($files);
+       
+       
+      
 
 
        $filtroON = "Pesquisa: ".$request['pesquisa']. ", Resultado: " .$files->count() . " items";
