@@ -38,8 +38,7 @@
 					<div class="logo">
 						<a href="/">
 						<span>Down Photos</span>
-						<span class="glyphicon glyphicon-cloud-download"></span>
-						<span class="glyphicon glyphicon-film"></span>						
+						<img src="/fotos/secure/Logo.png"/>					
 					</a>
 					</div>
 					
@@ -94,6 +93,12 @@ $(document).ready(function(){
 #home > div > div.w3l_header_left > div > ul > ul > a > li{
 width: 100%;
 padding-left: 0px;
+}
+.navbar-header > div > a > img{
+width:100px;
+height: 50px;
+padding-top: 0px;
+padding-bottom: 0px;
 }
 
 

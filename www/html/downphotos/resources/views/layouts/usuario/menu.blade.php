@@ -14,17 +14,7 @@
                                   <li><a href="{{ route('Imagem.filtrarImagem', ['Aprovados']) }}"><span class="hidden-xs hidden-sm">Aprovados</span></a></li> 
                                   <li><a href="{{ route('Imagem.filtrarImagem', ['Reprovados']) }}"><span class="hidden-xs hidden-sm">Reprovados</span></a></li> 
                             </div>
-
-                        <li class="row toggle" id="dropdown-detail-2" data-toggle="detail-2"><a href="javascript:void(0)"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Statistics</span></a></li>
-
-                         <div id="detail-2">
-                            <hr>
-                                  <li><a href="#"><span class="hidden-xs hidden-sm">teste</span></a></li> 
-                            </div>
-
-                        <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Calender</span></a></li>
-                        <li><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Users</span></a></li>
-                        <li><a href="#"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Setting</span></a></li>
+                        <li><a href="#"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Cadastro</span></a></li>
                     </ul>
                 </div>
             </div>

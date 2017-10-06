@@ -287,12 +287,20 @@ class ImagemController extends Controller
         $foto = $user->files->find($request['foto']);
         //dd($foto);
 
-        $foto->apelido = $request['nome'];
-        $foto->valor = $request['valor'];
-        $foto->descricao = $request['description'];
-        $foto->save();
-        session()->flash('Mensagem', ' Editaro com Sucesso' );
-        return back();
+         if($foto->situacao == 'ap'){
+
+          $foto->situacao = 'ag';
+
+          }
+         
+
+
+          $foto->apelido = $request['nome'];
+          $foto->valor = $request['valor'];
+          $foto->descricao = $request['description'];
+          $foto->save();
+          session()->flash('Mensagem', ' Editaro com Sucesso' );
+          return back();
          
       }else{
 
@@ -348,10 +356,23 @@ class ImagemController extends Controller
 
         if (!$validator->fails()) {
           $foto = $user->files->find($request['foto']);
-          $foto->situacao = "ag";
-          $foto->save();
-          session()->flash('Mensagem', ' Enviado para Aprovação' );
-          return back();
+
+          if($foto->situacao == 'ap'){
+
+            return back()->withErrors([ 
+                
+                'Esta Imagem já está aprovada' 
+            ]);
+
+          }
+          else{
+            $foto->situacao = "ag";
+            $foto->save();
+            session()->flash('Mensagem', ' Enviado para Aprovação' );
+            return back();
+          }
+
+           
          }
          else{
             return back()->withErrors($validator);

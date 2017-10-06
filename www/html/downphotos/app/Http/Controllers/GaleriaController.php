@@ -8,14 +8,21 @@ use Image;
 
 class GaleriaController extends Controller
 {
-    public function create()
+    public function create(Request $request)
     {
 
     	$imagens = \App\Imagem::latest();
 
-    	$files = $imagens->where('situacao', '=', 'ap')->paginate(25);
 
-    	return view('layouts.galeria.galeria', compact('files'));
+       $files = $imagens->where('situacao', '=', 'ap');
+       $filtroON = "Quantidade de fotos: ".$files->count();
+
+    	$files = $imagens->where('situacao', '=', 'ap')->paginate(25);
+      $request->session()->put('url.intended',url()->full());
+
+
+
+    	return view('layouts.galeria.galeria', compact('files', 'filtroON'));
     }
 
      public function pesquisar(){
@@ -57,19 +64,17 @@ class GaleriaController extends Controller
 
 
     }
-    public function preview($fileId)
+    public function preview($fileId, $resize)
     {
 
 
-       $file = \App\Imagem::find($fileId);
+        $file = \App\Imagem::find($fileId);
    
      
         $finalPath = $file->caminho.'/'.$file->nome;
             
          $mime = mime_content_type($finalPath);
 
-
-         $resize = 250;
 
           $watermark = Image::make('fotos/secure/watermark.png');
                     $image = Image::make($finalPath);
@@ -87,29 +92,59 @@ class GaleriaController extends Controller
                     });
 
 
-           if($mime == "image/jpeg")
-            {
+                   if($mime == "image/jpeg")
+                    {
 
-                   
+                           if($resize == 250){
 
-                    return $image->insert($watermark, 'center')
-                   ->encode('data-url',0)
-                   ->orientate()
-                   ->resize($resize, $resize)
-                   ->response();
+                             return $image->insert($watermark, 'center')
+                           ->encode('data-url',0)
+                           ->orientate()
+                           ->resize($resize, $resize)
+                           ->response();
 
-            }
-            else{
+                           }else{
 
-                  
 
-                   return $image->insert($watermark, 'center')
-                   ->encode('data-url',0)
-                   ->resize($resize, $resize)
-                   ->response();
-                  
+                           if($resize == 0){
+                            return $image->insert($watermark, 'center')
+                           ->encode('data-url',0)
+                           ->orientate()
+                           ->response();
+                           
+                           }
+                          
 
-            }
+                         }
+
+                           
+
+                    }
+                    else{
+
+
+                        if($resize == 250){
+
+                             return $image->insert($watermark, 'center')
+                           ->encode('data-url',0)
+                           ->resize($resize, $resize)
+                           ->response();
+
+                           }else{
+
+
+                           if($resize == 0){
+                            return $image->insert($watermark, 'center')
+                           ->encode('data-url',0)
+                           ->response();
+                           
+                           }
+                          
+
+                         }
+                          
+
+                    }
       }
 
 
@@ -124,6 +159,7 @@ class GaleriaController extends Controller
             ]);
        }
        else{
+       
         $file = \App\Imagem::find($fotoId);
         //dd($file);
         //return view('layouts.usuario.editarImagem', compact('file'));

@@ -26,7 +26,7 @@
                         <p>{{ $file->valor }}</p>
                         
                      </div>
-                     <a data-fancybox="gallery" href="#"><img src="/galeria/preview/{{ $file->id }}" ></img></a>
+                     <a data-fancybox="gallery" href="/galeria/preview/{{ $file->id }}/{{0}}"><img src="/galeria/preview/{{ $file->id }}/{{250}}" ></img></a>
                   </div>
 
                   
@@ -45,7 +45,7 @@
 
                   </div>
 
-                  <button id="right" type="submit" name="foto" value="{{ $file->id }}">Baixar Foto</button>
+                  <button id="right" type="submit" name="foto" value="{{ $file->id }}">Adicionar</button>
                   <a href="{{Session::get('url.intended')}}">Fechar</a>
                  
                   <div class="clearfix"></div>
@@ -71,9 +71,7 @@ height: 230px;
 padding: 8px;
 font-size: 1em;
 padding: 0.5em;
--webkit-box-shadow: -9px 10px 5px -4px rgba(0,0,0,0.44);
--moz-box-shadow: -9px 10px 5px -4px rgba(0,0,0,0.44);
-box-shadow: -9px 10px 5px -4px rgba(0,0,0,0.44)
+
 }
 
 .col-md-6.login-left.wow.fadeInLeft > div:nth-child(1) > p{
@@ -82,9 +80,7 @@ box-shadow: -9px 10px 5px -4px rgba(0,0,0,0.44)
     width: 96%;
     font-size: 1em;
     padding: 0.5em;
-    -webkit-box-shadow: -9px 10px 5px -4px rgba(0,0,0,0.44);
-    -moz-box-shadow: -9px 10px 5px -4px rgba(0,0,0,0.44);
-    box-shadow: -9px 10px 5px -4px rgba(0,0,0,0.44);
+
 
 }
 .col-md-6.login-left.wow.fadeInLeft > div:nth-child(2) > p{
@@ -93,9 +89,7 @@ box-shadow: -9px 10px 5px -4px rgba(0,0,0,0.44)
     width: 96%;
     font-size: 1em;
     padding: 0.5em;
-    -webkit-box-shadow: -9px 10px 5px -4px rgba(0,0,0,0.44);
-    -moz-box-shadow: -9px 10px 5px -4px rgba(0,0,0,0.44);
-    box-shadow: -9px 10px 5px -4px rgba(0,0,0,0.44);
+
   
 }
 

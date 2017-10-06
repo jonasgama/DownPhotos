@@ -59,8 +59,10 @@ class UsuarioController extends Controller
 
         $user = Auth::user();
         //$Imagem = $user->Imagem->take(1);
-        $files = Imagem::where('user_id', '=', $user->id)->paginate(5);
+        $files = Imagem::where('user_id', '=', $user->id);
         $qt = "Quantidade de fotos: ".$files->count();
+        $files = Imagem::where('user_id', '=', $user->id)->paginate(5);
+       
         //dd($filtroON);
         //$Imagem = Imagem::all()
         //dd($request);

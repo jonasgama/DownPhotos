@@ -44,5 +44,5 @@ Route::get('/foto/filtrar/{filtro}', ['as' => 'Imagem.filtrarImagem', 'uses' => 
 Route::post('/foto/pesquisar', ['as' => 'Imagem.pesquisarImagem', 'uses' => 'ImagemController@pesquisar'])->middleware('auth');
 
 Route::post('/galeria/pesquisar', ['as' => 'Galeria.pesquisarImagem', 'uses' => 'GaleriaController@pesquisar']);
-Route::get('/galeria/preview/{fileId}', ['as' => 'Galeria.preview', 'uses' => 'GaleriaController@preview']);
+Route::get('/galeria/preview/{fileId}/{resize}', ['as' => 'Galeria.preview', 'uses' => 'GaleriaController@preview']);
 Route::get('/galeria/painel/{fileId}', ['as' => 'Galeria.PainelCompra', 'uses' => 'GaleriaController@painel']);

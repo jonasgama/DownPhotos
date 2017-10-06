@@ -15,7 +15,7 @@
                   <div class="col-md-6 login-left wow fadeInLeft">
                      <div class="wow fadeInLeft">
                         <h3>Nome da Foto</h3>
-                        <input class="nome" name="nome" type="text" placeholder="Insira o nome da foto" required/>
+                        <input class="nome" name="nome" type="text" value="{{$file->apelido}}" placeholder="Insira o nome da foto" required/>
                      </div>
                      <div class="wow fadeInLeft">
                         <h3>Valor da Foto</h3>

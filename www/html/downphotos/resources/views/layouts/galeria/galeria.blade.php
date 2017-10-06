@@ -17,13 +17,15 @@
                         <li>{{$filtroON}}</li>
                     </ul>
                    @endif
+
+
   <div class="wrap">
     
     <!-- Define all of the tiles: -->
   @foreach ($files as $file)
     <div class="box">
       <div class="boxInner">
-         <a href="/galeria/painel/{{ $file->id }}" data-toggle="modal" data-target="#yourModal"><img src="/galeria/preview/{{ $file->id }}" class="media-photo"/></a>
+         <a href="/galeria/painel/{{ $file->id }}" data-toggle="modal" data-target="#yourModal"><img src="/galeria/preview/{{ $file->id }}/{{ 250 }}" class="media-photo"/></a>
         <div class="titleBox">{{ $file->apelido }}</div>
       </div>
     </div>
@@ -71,7 +73,7 @@
     background-color: #fff;
     border: 1px solid transparent;
     -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
-    box-shadow: -4px 6px 5px #827a7a;
+    box-shadow: -1px 1px 1px #827a7a;
     }
 
     .boxInner {
