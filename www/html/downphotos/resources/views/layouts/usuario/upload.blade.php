@@ -4,12 +4,12 @@
 @extends('layouts.master')
 @section('content') 
 @include('layouts.includes.scriptFancyBox')
-<link rel="stylesheet" href="/bower_components/blueimp-file-upload/css/jquery.fileupload.css">
+<link rel="stylesheet" href="/lib/blueimp-file-upload/css/jquery.fileupload.css">
 <link href="{{ asset('css/usuario.css') }}" rel="stylesheet" />
-<script src="/bower_components/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
-<script src="/bower_components/blueimp-file-upload/js/jquery.fileupload.js"></script>
-<script src="/bower_components/blueimp-file-upload/js/jquery.fileupload-process.js"></script>
-<script src="/bower_components/blueimp-file-upload/js/jquery.fileupload-validate.js"></script>
+<script src="/lib/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
+<script src="/lib/blueimp-file-upload/js/jquery.fileupload.js"></script>
+<script src="/lib/blueimp-file-upload/js/jquery.fileupload-process.js"></script>
+<script src="/lib/blueimp-file-upload/js/jquery.fileupload-validate.js"></script>
 <div class="main-1">
 <h1>Envio de Imagens</h1>
 @include('layouts.usuario.menu')

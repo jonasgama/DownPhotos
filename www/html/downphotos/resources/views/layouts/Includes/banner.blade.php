@@ -1,36 +1,28 @@
 <!-- banner -->
+
 	<div class="banner">
+
 		<div id="kb" class="carousel kb_elastic animate_text kb_wrapper" data-ride="carousel" data-interval="6000" data-pause="hover">
 
             <!-- Wrapper-for-Slides -->
             <div class="carousel-inner" role="listbox">
-
                 <!-- First-Slide -->
                 <div class="item active">
-                    <img src="images/1.jpeg" alt="" class="img-responsive" />
-                    <div class="carousel-caption kb_caption">
-                        <h3 data-animation="animated flipInX">Complete guide to Birds</h3>
-                        <h4 data-animation="animated flipInX">A Site for Bird Lovers</h4>
-                    </div>
+                    <img src="/galeria/preview/{{$carousel->get(0)->id}}/{{0}}" alt="" class="img-responsive" />
+                </div>
+                
+              
+                <div class="item">
+                    <img src="/galeria/preview/{{$carousel->get(1)->id}}/{{0}}" alt="" class="img-responsive" />
+                   
+                </div>
+             
+                 <div class="item">
+                    <img src="/galeria/preview/{{$carousel->get(2)->id}}/{{0}}" alt="" class="img-responsive" />
+                    
                 </div>
 
-                <!-- Second-Slide -->
-                <div class="item">
-                    <img src="images/2.jpeg" alt="" class="img-responsive" />
-                    <div class="carousel-caption kb_caption kb_caption_right">
-                        <h3 data-animation="animated flipInX">Choosing the right bird</h3>
-                        <h4 data-animation="animated flipInX">A Site for Bird Lovers</h4>
-                    </div>
-                </div>
-
-                <!-- Third-Slide -->
-                <div class="item">
-                    <img src="images/3.jpeg" alt="" class="img-responsive" />
-                    <div class="carousel-caption kb_caption kb_caption_center">
-                         <h3 data-animation="animated flipInX">Complete guide to Birds</h3>
-                        <h4 data-animation="animated flipInX">A Site for Bird Lovers</h4>
-                    </div>
-                </div>
+               
 
             </div>
 			
@@ -47,5 +39,9 @@
             </a>
 			
         </div>
+
 	</div>
+
+
+
 <!-- //banner -->

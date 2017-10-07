@@ -50,11 +50,9 @@
 						<ul class="nav navbar-nav">
 							<li><a href="/" class="scroll hvr-bounce-to-bottom"><span class="glyphicon glyphicon-home"></span></a></li>
 							<li><a href="/galeria" class="scroll hvr-bounce-to-bottom">Galeria</a></li>
-							<li><a href="#about" class="scroll hvr-bounce-to-bottom">About</a></li>
-							<li><a href="#team" class="scroll hvr-bounce-to-bottom">Team</a></li>
-							<li><a href="#services" class="scroll hvr-bounce-to-bottom">Services</a></li>
-							<li><a href="#video" class="scroll hvr-bounce-to-bottom">Videos</a></li>
-							<li><a href="#contact" class="scroll hvr-bounce-to-bottom">Contact Us</a></li>
+							<li><a href="/sobre">Sobre Nós</a></li>
+							<li><a href="/time" class="scroll hvr-bounce-to-bottom">Time</a></li>
+							<li><a href="#contact" class="scroll hvr-bounce-to-bottom">Contato</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -74,7 +72,18 @@
 			</div>
 		</div>
 	</div>
-<!-- //header -->
+
+
+
+<div class="agileinfo_copy_right">
+		<div class="container">
+			<div class="agileinfo_copy_right_left">
+				<p>Compra e Venda de fotografias digitais: <i>Banco de Imagens - DownPhotos</i></p>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+
 
 
 <script>

@@ -14,15 +14,15 @@ class GaleriaController extends Controller
     	$imagens = \App\Imagem::latest();
 
 
-       $files = $imagens->where('situacao', '=', 'ap');
-       $filtroON = "Quantidade de fotos: ".$files->count();
+      $files = $imagens->where('situacao', '=', 'ap');
+      $qt = "Quantidade de fotos: ".$files->count();
 
     	$files = $imagens->where('situacao', '=', 'ap')->paginate(25);
       $request->session()->put('url.intended',url()->full());
 
 
 
-    	return view('layouts.galeria.galeria', compact('files', 'filtroON'));
+    	return view('layouts.galeria.galeria', compact('files', 'qt'));
     }
 
      public function pesquisar(){

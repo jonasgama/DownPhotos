@@ -18,6 +18,25 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('index');
+
+
+        $carousel = \App\Imagem::oldest()->take(3)->get();
+
+        $miniGaleria = \App\Imagem::latest()->take(11)->get();
+        //dd($carousel->get());
+        //11 fotos para a galeria secundári
+
+        return view('index', compact('carousel', 'miniGaleria'));
     }
+
+    public function about(){
+
+        return view('layouts.sobre');
+    }
+    public function time(){
+        
+        return view('layouts.time');
+    }
+
+
 }

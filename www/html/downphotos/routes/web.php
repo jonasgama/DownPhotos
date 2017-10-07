@@ -13,6 +13,9 @@
 
 
 Route::get('/', 'HomeController@index')->name('home'); # é uma forma de referencia para a url especificada no route.
+Route::get('/sobre', 'HomeController@about');
+Route::get('/time', 'HomeController@time');
+
 Route::get('/inicio', 'HomeController@index');
 
 Route::get('/usuario', [ 'as' => 'login', 'uses' => 'UsuarioController@create'])->name('login');; 

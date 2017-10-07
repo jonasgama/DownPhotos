@@ -17,6 +17,11 @@
                         <li>{{$filtroON}}</li>
                     </ul>
                    @endif
+   @if(!empty($qt))
+                    <ul class="list-inline">
+                        <li>{{$qt}}</li>
+                    </ul>
+                   @endif
 
 
   <div class="wrap">

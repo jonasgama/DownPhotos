@@ -7,21 +7,27 @@
 @section('content') 
 @include('layouts.includes.banner')
 <!-- work -->
+
+<div class="agileinfo_copy_right">
+      <div class="container">
+         <div class="clearfix"> </div>
+      </div>
+   </div>
 <div class="work" id="about">
    <div class="agileits_works-top">
       <div class="col-md-6 agileits_works-grid">
          <div class="wthree-text">
-            <h4>In Simple words</h4>
+            <h4>Venda de Imagens</h4>
             <div class="w3_tittle">
                <div class="line-style"><span></span></div>
             </div>
-            <p>Ut fringilla euismod sagittis. Cras semper ante sapien, in ornare nisi euismod eu.. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In pellentesque, lectus at auctor luctus, lacus nibh dignissim ante, sed maximus arcu odio vitae lectus.</p>
+            <p></p>
             <p>Ut fringilla euismod sagittis. Cras semper ante sapien, in ornare nisi euismod eu.. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.</p>
          </div>
       </div>
       <div class="col-md-6 agileits_works-grid two">
          <div class="wthree-text">
-            <h4>In Simple words</h4>
+            <h4>Compra de Imagens</h4>
             <div class="w3_tittle">
                <div class="line-style"><span></span></div>
             </div>
@@ -43,55 +49,23 @@
 <!-- gallery -->
 <div class="gallery" id="gallery">
    <div class="w3_tittle second two">
-      <h3 class="agile-tittle two gal">Photo Gallery</h3>
+      <a href="/galeria"><h3 class="agile-tittle two gal">Ir para Galeria</h3></a>
       <div class="line-style second"><span class="second"></span></div>
    </div>
    <div class="w3-agile-top-info">
       <div class="agileits_work_grids">
          <ul id="flexiselDemo1">
+         @foreach($miniGaleria as $i)
          <li>
             <div class="agileits_work_grid view view-sixth">
                <div class="grid">
                   <figure class="effect-roxy">
-                     <img src="images/4.jpeg" alt="" />
-                     <figcaption>
-                        <h1>Dazzling <span>Birds</span></h1>
-                        <p >Loving Birds</p>
-                     </figcaption>
+                     <img src="/galeria/preview/{{$i->id}}/{{0}}" alt="" />
                   </figure>
                </div>
             </div>
          </li>
-         <li>
-            <div class="agileits_work_grid view view-sixth">
-               <div class="grid">
-                  <figure class="effect-roxy">
-                     <a class="example-image-link" href="images/g2.jpg" data-lightbox="example-set" data-title="In lacinia pharetra ipsum vel dapibus. Ut vitae tristique nisi, mattis pellentesque elit. Proin mollis sed nisi ac sodales.">
-                        <img src="images/5.jpeg" alt="" />
-                        <figcaption>
-                           <h1>Dazzling <span>Birds</span></h1>
-                           <p>Loving Birds</p>
-                        </figcaption>
-                     </a>
-                  </figure>
-               </div>
-            </div>
-         </li>
-         <li>
-            <div class="agileits_work_grid view view-sixth">
-               <div class="grid">
-                  <figure class="effect-roxy">
-                     <a class="example-image-link" href="images/g3.jpg" data-lightbox="example-set" data-title="In lacinia pharetra ipsum vel dapibus. Ut vitae tristique nisi, mattis pellentesque elit. Proin mollis sed nisi ac sodales.">
-                        <img src="images/6.jpeg" alt="" />
-                        <figcaption>
-                           <h1>Dazzling <span>Birds</span></h1>
-                           <p>Loving Birds</p>
-                        </figcaption>
-                     </a>
-                  </figure>
-               </div>
-            </div>
-         </li>
+         @endforeach
       </ul>
       </div>
    </div>
