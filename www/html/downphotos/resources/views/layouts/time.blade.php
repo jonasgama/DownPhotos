@@ -34,7 +34,7 @@
             <blockquote>
               <div class="row">
                 <div class="col-sm-3 text-center">
-                  <img class="img-circle" src="/images/6.jpeg" style="width: 100px;height:100px;">
+                  <img class="img-circle" src="/fotos/secure/jonas.jpg" style="width: 100px;height:100px;">
                   <!--<img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/kolage/128.jpg" style="width: 100px;height:100px;">-->
                 </div>
                 <div class="col-sm-9">
@@ -53,7 +53,7 @@
             <blockquote>
               <div class="row">
                 <div class="col-sm-3 text-center">
-                  <img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/mijustin/128.jpg" style="width: 100px;height:100px;">
+                  <img class="img-circle" src="/fotos/secure/juliana.jpg" style="width: 100px;height:100px;">
                 </div>
                 <div class="col-sm-9">
                    <h2>Juliana Ferreira</h2>
@@ -72,7 +72,7 @@
             <blockquote>
               <div class="row">
                 <div class="col-sm-3 text-center">
-                  <img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/mijustin/128.jpg" style="width: 100px;height:100px;">
+                  <img class="img-circle" src="/fotos/secure/rafael.jpg" style="width: 100px;height:100px;">
                 </div>
                 <div class="col-sm-9">
                    <h2>Rafael Ferreira</h2>
@@ -91,7 +91,7 @@
             <blockquote>
               <div class="row">
                 <div class="col-sm-3 text-center">
-                  <img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/mijustin/128.jpg" style="width: 100px;height:100px;">
+                  <img class="img-circle" src="/fotos/secure/wilma.jpg" style="width: 100px;height:100px;">
                 </div>
                 <div class="col-sm-9">
                    <h2>Wilma Serpa</h2>

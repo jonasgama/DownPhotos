@@ -17,28 +17,32 @@
    <div class="agileits_works-top">
       <div class="col-md-6 agileits_works-grid">
          <div class="wthree-text">
-            <h4>Venda de Imagens</h4>
+            <h4>Como Funciona ?</h4>
             <div class="w3_tittle">
                <div class="line-style"><span></span></div>
             </div>
             <p></p>
-            <p>Ut fringilla euismod sagittis. Cras semper ante sapien, in ornare nisi euismod eu.. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.</p>
+            <p>Nosso site é uma plataforma para você que gosta de fotografar e postar suas fotos para serem vendidas. 
+               Comece com o cadastro, envie suas fotos e defina seu próprio preço
+               Todas as imagens passarão por uma avaliação antes de estarem disponíveis para venda.
+            </p>
          </div>
       </div>
       <div class="col-md-6 agileits_works-grid two">
          <div class="wthree-text">
-            <h4>Compra de Imagens</h4>
+            <h4>E os custos ?</h4>
             <div class="w3_tittle">
                <div class="line-style"><span></span></div>
             </div>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry,Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis 
-               voluptatibus
+            <p>Sobre cada venda receberemos uma comissão, então poste suas fotos e comece 
+               a ganhar dinheiro. O cadastro é gratuito!!
             </p>
+            <p>Nossas fotos podem ser utilizadas em:</p>
             <ul class="about-agile">
-               <li><i class="fa fa-long-arrow-right" aria-hidden="true"></i>Popular tips & advice</li>
-               <li><i class="fa fa-long-arrow-right" aria-hidden="true"></i>Professional approach</li>
-               <li><i class="fa fa-long-arrow-right" aria-hidden="true"></i>Birds for sale</li>
-               <li><i class="fa fa-long-arrow-right" aria-hidden="true"></i>Professional care</li>
+               <li><i class="fa fa-long-arrow-right" aria-hidden="true"></i>Layouts de website</li>
+               <li><i class="fa fa-long-arrow-right" aria-hidden="true"></i>Impressões</li>
+               <li><i class="fa fa-long-arrow-right" aria-hidden="true"></i>Divulgações</li>
+               <li><i class="fa fa-long-arrow-right" aria-hidden="true"></i>Comunicação visual e outros...</li>
             </ul>
          </div>
       </div>

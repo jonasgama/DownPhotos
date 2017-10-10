@@ -17,7 +17,7 @@ class GaleriaController extends Controller
       $files = $imagens->where('situacao', '=', 'ap');
       $qt = "Quantidade de fotos: ".$files->count();
 
-    	$files = $imagens->where('situacao', '=', 'ap')->paginate(25);
+    	$files = $imagens->where('situacao', '=', 'ap')->paginate(20);
       $request->session()->put('url.intended',url()->full());
 
 
