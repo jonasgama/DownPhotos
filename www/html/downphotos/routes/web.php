@@ -17,7 +17,7 @@ Route::get('/sobre', 'HomeController@about');
 Route::get('/time', 'HomeController@time');
 
 Route::get('/inicio', 'HomeController@index');
-
+#gulp ^
 Route::get('/usuario', [ 'as' => 'login', 'uses' => 'UsuarioController@create'])->name('login');; 
 Route::get('/envio', 'UsuarioController@envio')->middleware('auth');
 Route::post('/usuario', 'UsuarioController@store'); 

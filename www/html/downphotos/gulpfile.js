@@ -8,9 +8,10 @@ gulp.task('uncss', function() {
   .pipe(uncss({
       html: [
         'http://downphotos.dev/',
-        'http://downphotos.dev/usuario',
-        'http://downphotos.dev/registro',
-        'http://downphotos.dev/galeria'
+		'http://downphotos.dev/sobre',
+		'http://downphotos.dev/time',
+		'http://downphotos.dev/usuario',
+		'http://downphotos.dev/envio'
       ],
     })).pipe(gulp.dest('new/'));
 });

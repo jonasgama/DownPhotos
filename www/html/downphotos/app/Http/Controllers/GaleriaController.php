@@ -161,9 +161,22 @@ class GaleriaController extends Controller
        else{
        
         $file = \App\Imagem::find($fotoId);
-        //dd($file);
+
+        $img = Image::make($file->caminho . $file->nome);
+        $filesize =  $img->filesize();
+        $filesize = $filesize/1024; //kb
+        $filesize = $filesize/1024; //mb
+        $filesize = number_format ( $filesize , 2  );
+        //$filesize = filesize($file->caminho . $file->nome );
+
+        $height =   $img->height();
+        $width =  $img->width();
+        $mime =   $img->mime();
+
+
+
         //return view('layouts.usuario.editarImagem', compact('file'));
-        return view('layouts.galeria.painelCompra', compact('file'));
+        return view('layouts.galeria.painelCompra', compact('file', 'filesize', 'height', 'width', 'mime'));
         //return $file;
        } 
       }
