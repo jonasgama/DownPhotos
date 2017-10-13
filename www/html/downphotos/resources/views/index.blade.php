@@ -7,6 +7,7 @@
 @section('content') 
 @include('layouts.includes.banner')
 <!-- work -->
+<link rel="stylesheet" href="css/proxy.css">
 
 <div class="agileinfo_copy_right">
       <div class="container">
@@ -75,54 +76,6 @@
    </div>
 </div>
 <!-- //gallery -->
-<!-- services -->
-<div class="services" id="services">
-   <div id="particles-js"></div>
-   <div class="agileits-w3layouts-grid">
-      <div class="w3_tittle second">
-         <h3 class="agile-tittle two">Our Services</h3>
-         <div class="line-style second"><span class="second"></span></div>
-      </div>
-      <div class="wthree_agile_us leftw3ls">
-         <div class="col-xs-8 agile-why-text">
-            <h4>Professional care</h4>
-            <p>Lorem ipsum magna, vehicula ut scelerisque ornare porta ete.</p>
-         </div>
-         <div class="col-xs-4 agile-why-text">
-            <div class="wthree_features_grid left hvr-rectangle-out">
-               <i class="fa fa-medkit" aria-hidden="true"></i>
-            </div>
-         </div>
-         <div class="clearfix"> </div>
-      </div>
-      <div class="wthree_agile_us leftw3ls">
-         <div class="col-xs-4 agile-why-text">
-            <div class="wthree_features_grid left hvr-rectangle-out">
-               <i class="fa fa-usd" aria-hidden="true"></i>
-            </div>
-         </div>
-         <div class="col-xs-8 agile-why-text two">
-            <h4>Birds for sale</h4>
-            <p>Lorem ipsum magna, vehicula ut scelerisque ornare porta ete.</p>
-         </div>
-         <div class="clearfix"> </div>
-      </div>
-      <div class="wthree_agile_us leftw3ls">
-         <div class="col-xs-8 agile-why-text">
-            <h4>Useful Tips & advice</h4>
-            <p>Lorem ipsum magna, vehicula ut scelerisque ornare porta ete.</p>
-         </div>
-         <div class="col-xs-4 agile-why-text">
-            <div class="wthree_features_grid left hvr-rectangle-out">
-               <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-            </div>
-         </div>
-         <div class="clearfix"> </div>
-      </div>
-      <div class="clearfix"> </div>
-   </div>
-</div>
 <!-- //services -->
 @include('layouts.includes.scriptsIndex')
 @endsection
-

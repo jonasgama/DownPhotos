@@ -10,7 +10,11 @@
          <li class="row toggle" id="dropdown-detail-1" data-toggle="detail-1"><a href="javascript:void(0)"><i class="glyphicon glyphicon-filter" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Filtros</span></a></li>
          <div id="detail-1">
             <hr>
-            <li><a href="{{ route('Imagem.filtrarImagem', ['Novos']) }}"><span class="hidden-xs hidden-sm">Novos</span></a></li>
+            @foreach ($archives as $meses) 
+                              
+            <li><a href="galeria/?mes={{ $meses['mes'] }}&ano={{ $meses['ano'] }}"><span class="hidden-xs hidden-sm">{{$meses['mes'] . ' ' . $meses['ano']}}</span></a></li>
+                                                                     
+           @endforeach
          </div>
       </ul>
    </div>

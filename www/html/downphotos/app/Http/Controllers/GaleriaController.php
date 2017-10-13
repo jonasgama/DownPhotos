@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Validator;
 use Image;
+use Carbon\Carbon;
+
 
 class GaleriaController extends Controller
 {
@@ -12,17 +14,36 @@ class GaleriaController extends Controller
     {
 
     	$imagens = \App\Imagem::latest();
+      $info = ""; 
 
+       if($month = request('mes')){ //mes é o valor do request da url da página
+            //whereMonth é um built-in do laravel
+            $imagens->whereMonth('created_at', Carbon::parse($month)->month); //aqui estamos convertendo a string da url (mes) para um valor inteiro equivalente a mes
+            $info =  "Em: " . Carbon::parse($month)->month;
+        }
+        
+        if($year = request('ano')){//ano é o valor do request da url da página
+            //whereYear é um built-in do laravel
+            $imagens->whereYear('created_at', $year);
+            $info =  $info."/" . $year;
+        }
+        
+
+         $archives = \App\Imagem::selectRaw('year(created_at) ano, monthname(created_at) mes, count(*) publicados')
+            ->groupBy('ano','mes')
+            ->orderByRaw('min(created_at) desc')
+            ->get()
+            ->toArray();
+
+     
 
       $files = $imagens->where('situacao', '=', 'ap');
-      $qt = "Quantidade de fotos: ".$files->count();
+      $qt = "Quantidade de fotos: ".$files->count() . " " . $info;
 
     	$files = $imagens->where('situacao', '=', 'ap')->paginate(20);
       $request->session()->put('url.intended',url()->full());
 
-
-
-    	return view('layouts.galeria.galeria', compact('files', 'qt'));
+    	return view('layouts.galeria.galeria', compact('files', 'qt', 'archives'));
     }
 
      public function pesquisar(){
