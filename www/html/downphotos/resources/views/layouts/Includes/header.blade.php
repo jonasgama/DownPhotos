@@ -5,12 +5,21 @@
 			<div class="dropdown">
 				<ul>
 					@if (Auth::check())
-					<!--<a href="#" data-toggle="popover" data-placement="right" data-content="{{ Auth::user()->email }}" title="{{ Auth::user()->sobrenome }}"><li><span class="glyphicon glyphicon-user" aria-hidden="true"></span>{{ Auth::user()->nome }}</li></a>-->
-					<a href="#"><li><span class="glyphicon glyphicon-user" aria-hidden="true"></span>{{ Auth::user()->nome }}</li></a>
-					<ul class="dropdown-menu" role="menu">
-					    <a href="/envio"><li><span class="glyphicon glyphicon-upload" aria-hidden="true"></span>Minhas Fotos</li></a>
-					    <a href="/sair"><li><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>Sair</li></a>
-                    </ul>
+						
+							<a href="#"><li><span class="glyphicon glyphicon-user" aria-hidden="true"></span>{{ Auth::user()->nome }}</li></a>
+							<ul class="dropdown-menu" role="menu">
+							    <a href="/envio"><li><span class="glyphicon glyphicon-upload" aria-hidden="true"></span>Minhas Fotos</li></a>
+							    {{-- alterado por rafael gomes --}}
+								@can('moderation', Auth::user())
+
+									<a href="/moderacao"><li><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>Moderação</li></a>
+									<a href="/relatorios"><li><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>Relatórios</li></a>
+
+								@endcan
+							    <a href="/cadastro"><li><span class="fa fa-cog" aria-hidden="true"></span><span>Cadastro</span></li></a>
+							    <a href="/sair"><li><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>Sair</li></a>
+		                    </ul>
+		                
 					
 					@else
 					<a href="/usuario"><li><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Entrar</li></a>
@@ -18,9 +27,19 @@
 					@endif	
 
 				</ul>
+			  </div>
 			</div>
+			@if (Auth::check())
+
+			<div class="w3l_header_left">
+				<ul>
+					<li><a href="/registro">Seu saldo: R$&nbsp13</a></li>
+				</ul>
+				
 
 			</div>
+
+			@endif
 			<div class="clearfix"> </div>
 		</div>
 	</div>
@@ -29,12 +48,6 @@
 			<nav class="navbar navbar-default">
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
-				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				  </button>
 					<div class="logo">
 						<a href="/">
 						<span>Down Photos</span>
@@ -52,6 +65,7 @@
 							<li><a href="/galeria" class="scroll hvr-bounce-to-bottom">Galeria</a></li>
 							<li><a href="/sobre">Sobre Nós</a></li>
 							<li><a href="/time" class="scroll hvr-bounce-to-bottom">Time</a></li>
+							<li><a href="/faq" class="scroll hvr-bounce-to-bottom">FAQ</a></li>
 							<li><a href="#contact" class="scroll hvr-bounce-to-bottom">Contato</a></li>
 						</ul>
 					</nav>
@@ -109,6 +123,11 @@ height: 50px;
 padding-top: 0px;
 padding-bottom: 0px;
 }
-
+#home > div > div:nth-child(2) > a{
+	color:white;
+	position: relative;
+	top:8px;
+}
 
 </style>
+

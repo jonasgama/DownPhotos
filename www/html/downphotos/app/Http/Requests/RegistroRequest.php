@@ -28,11 +28,13 @@ class RegistroRequest extends FormRequest
      */
     public function rules()
     {
+        $userObj = new \App\User;
         return [
-            'nome' => 'required|string|min:2|max:255',
-            'sobrenome' => 'required|string|min:2|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|confirmed|string|min:6|confirmed'
+            'nome' => 'required|string|min:'.$userObj::minNome.'|max:'.$userObj::maxNome,
+            'sobrenome' => 'required|string|min:'.$userObj::minSobrenome.'|max:'.$userObj::maxSobrenome,
+            'email' => 'required|string|email|max:'.$userObj::maxEmail.'|unique:users',
+            'password' => 'required|confirmed|string|min:'.$userObj::minPassword.'|max:'.$userObj::maxPassword.'|confirmed',
+
         ];
     }
 
@@ -42,7 +44,13 @@ class RegistroRequest extends FormRequest
             'nome' => request('nome'),
             'sobrenome' => request('sobrenome'),
             'email' => request('email'),
-            'password' => bcrypt(request('password'))
+            'password' => bcrypt(request('password')),
+            'access_level_id' => 2,
+            'cep' => null,
+            'endereco' => null,
+            'cidade' => null,
+            'pais' => null,
+            'telefone' => null
             ]);
         
         auth()->login($user);

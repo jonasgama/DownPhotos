@@ -22,6 +22,7 @@ class CreateImagemsTable extends Migration
             $table->string('caminho');
             $table->enum('situacao', ['nv','ag','ap', 're' ]);
             $table->integer('user_id');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

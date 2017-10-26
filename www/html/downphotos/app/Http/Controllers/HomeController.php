@@ -37,6 +37,10 @@ class HomeController extends Controller
         
         return view('layouts.time');
     }
+    public function faq(){
+        
+        return view('layouts.faq');
+    }
 
 
 }

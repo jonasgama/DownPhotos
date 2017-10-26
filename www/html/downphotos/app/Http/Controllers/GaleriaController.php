@@ -27,21 +27,18 @@ class GaleriaController extends Controller
             $imagens->whereYear('created_at', $year);
             $info =  $info."/" . $year;
         }
-        
 
-         $archives = \App\Imagem::selectRaw('year(created_at) ano, monthname(created_at) mes, count(*) publicados')
-            ->groupBy('ano','mes')
-            ->orderByRaw('min(created_at) desc')
-            ->get()
-            ->toArray();
+         $imagemObj = new \App\Imagem;
+         $files = $imagemObj->getFiltroGaleria('ap', $imagens)->paginate(20);
+         $qt = "Quantidade de fotos: ".$files->count() . " " . $info;
 
-     
 
-      $files = $imagens->where('situacao', '=', 'ap');
-      $qt = "Quantidade de fotos: ".$files->count() . " " . $info;
 
-    	$files = $imagens->where('situacao', '=', 'ap')->paginate(20);
-      $request->session()->put('url.intended',url()->full());
+         $archives = $imagemObj->getSideBar();
+
+        //dd($files);
+        $request->session()->put('url.intended',url()->full());
+
 
     	return view('layouts.galeria.galeria', compact('files', 'qt', 'archives'));
     }
@@ -167,41 +164,4 @@ class GaleriaController extends Controller
 
                     }
       }
-
-
-      public function painel($fotoId){
-
-
-        if($file = \App\Imagem::find($fotoId)->situacao != 'ap'){
-
-         return back()->withErrors([ 
-                
-                'Algo deu errado!' 
-            ]);
-       }
-       else{
-       
-        $file = \App\Imagem::find($fotoId);
-
-        $img = Image::make($file->caminho . $file->nome);
-        $filesize =  $img->filesize();
-        $filesize = $filesize/1024; //kb
-        $filesize = $filesize/1024; //mb
-        $filesize = number_format ( $filesize , 2  );
-        //$filesize = filesize($file->caminho . $file->nome );
-
-        $height =   $img->height();
-        $width =  $img->width();
-        $mime =   $img->mime();
-
-
-
-        //return view('layouts.usuario.editarImagem', compact('file'));
-        return view('layouts.galeria.painelCompra', compact('file', 'filesize', 'height', 'width', 'mime'));
-        //return $file;
-       } 
-      }
-
-
-
 }

@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Session;
 use URL;
 use Response;
+use Imagem;
 
 class ImagemController extends Controller
 {
@@ -167,11 +168,7 @@ class ImagemController extends Controller
     {
       $file = \App\Imagem::find($fileId);
      
-      $finalPath = $file->caminho;
-
-      $file->delete();
-
-      unlink($finalPath.'/'.$file->nome); 
+      $file->deleted_at = \Carbon\Carbon::now();
 
       session()->flash('Mensagem', 'Arquivo excluído com sucesso' );
 
@@ -271,13 +268,15 @@ class ImagemController extends Controller
 
       $user = Auth::user();
       $request = \Request::all();
-     
+      $imagemObj = new \App\Imagem;
+      //dd($imagemObj::minNome);
+
 
       $validatorEditar = Validator::make($request, [
 
-         'nome' => 'required|min:4|max:10',
-         'valor' => 'required|numeric|min:1|max:50',
-         'description' => 'required|min:11|max:50',
+         'nome' => 'required|min:'.$imagemObj::minNome.'|max:'.$imagemObj::maxNome,
+         'valor' => 'required|numeric|min:'.$imagemObj::minValor.'|max:'.$imagemObj::maxValor,
+         'description' => 'required|min:'.$imagemObj::minDesc.'|max:'.$imagemObj::maxDesc,
          'foto' => 'required'
 
       ]);
@@ -334,6 +333,7 @@ class ImagemController extends Controller
 
       $user = Auth::user();
       $request = \Request::all();
+      $imagemObj = new \App\Imagem;
       //$request = $request['descrição'];
       //dd($request['foto']);
       $validatorPublicar = Validator::make($request, [
@@ -347,13 +347,14 @@ class ImagemController extends Controller
         $foto = $user->files->find($request['foto'])->toArray();
         //dd($foto);
         $validator = Validator::make($foto, [
-          'apelido' => 'required|min:4|max:10',
-          'valor' => 'required|numeric|min:1|max:50',
-          'descricao' => 'required|min:11|max:50'
+          'apelido' => 'required|min:'.$imagemObj::minNome.'|max:'.$imagemObj::maxNome,
+          'valor' => 'required|numeric|min:'.$imagemObj::minValor.'|max:'.$imagemObj::maxValor,
+          'descricao' => 'required|min:'.$imagemObj::minDesc.'|max:'.$imagemObj::maxDesc
           ]
         
         );
 
+        
         if (!$validator->fails()) {
           $foto = $user->files->find($request['foto']);
 
@@ -390,24 +391,28 @@ class ImagemController extends Controller
 
     public function filtro($filtro)
     {
-        $user = Auth::user();
+        
        
        
 
        if($filtro == 'Novos'){
          $filtro = 'nv';
+         $info = "Novos";
        }
        else if($filtro == 'Aguardando'){
         $filtro = 'ag';
+        $info = "Aguardando";
 
        }
        else if($filtro == 'Aprovados'){
 
         $filtro = 'ap';
+        $info = "Aprovados";
        }
        else if($filtro == 'Reprovados'){
 
         $filtro = 're';
+        $info = "Reprovados";
        }
        else{
           return back()->withErrors([ 
@@ -417,12 +422,18 @@ class ImagemController extends Controller
        }
        
 
+         $user = Auth::user();
+         $imagemObj = new \App\Imagem;
 
-        $files = \App\Imagem::where('user_id', '=', $user->id);
-        $files =  $files->where('situacao', '=', $filtro)->paginate(5);
-        //dd($files);
 
-        return view('layouts.usuario.upload', compact('user', 'files'));
+         $files = $imagemObj->getFiltroImagensUsuario($user, $filtro);
+
+         $qt =$imagemObj->getFiltroQuantidadeImagensUsuario($user, $filtro);
+
+         //local
+         $filtroON = "Filtrando: ".$info. ", Resultado: " .$qt. " items";
+         
+        return view('layouts.usuario.upload', compact('user', 'files', 'filtroON'));
 
     }
 
@@ -440,7 +451,8 @@ class ImagemController extends Controller
 
        if (!$validatorPesquisar->fails()) {
 
-        $files = \App\Imagem::where('user_id', '=', $user->id);
+        $files =  \App\Imagem::where('deleted_at', '=', Null);
+        $files = $files->where('user_id', '=', $user->id);
   
 
         $files = $files->where('apelido', 'like', '%'.$request['pesquisa'].'%')

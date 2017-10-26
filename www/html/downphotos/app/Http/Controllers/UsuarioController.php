@@ -14,7 +14,7 @@ class UsuarioController extends Controller
 
     public function __construct() 
     {
-        $this->middleware('guest')->except(['destroy', 'envio', 'dashboard']);
+        $this->middleware('guest')->except(['destroy', 'envio', 'dashboard', 'cadastro', 'moderacao']);
 
        
 
@@ -54,14 +54,11 @@ class UsuarioController extends Controller
     {
         
    
-
-    
-
         $user = Auth::user();
-        //$Imagem = $user->Imagem->take(1);
-        $files = Imagem::where('user_id', '=', $user->id);
-        $qt = "Quantidade de fotos: ".$files->count();
-        $files = Imagem::where('user_id', '=', $user->id)->paginate(5);
+        $imagemObj = new \App\Imagem;
+
+        $qt = $imagemObj->getQuantidadeImagensUsuario($user);
+        $files = $imagemObj->getImagensUsuario($user);
        
         //dd($filtroON);
         //$Imagem = Imagem::all()
@@ -74,6 +71,13 @@ class UsuarioController extends Controller
     public function dashboard(){
 
         return view('dashboard');
+    }
+
+    public function cadastro()
+    {
+
+        return view('layouts.usuario.cadastro');
+
     }
    
 }

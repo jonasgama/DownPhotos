@@ -19,6 +19,12 @@ class CreateUsersTable extends Migration
             $table->string('sobrenome');
             $table->string('email');
             $table->string('password');
+            $table->integer('access_level_id');
+            $table->string('cep')->nullable();
+            $table->text('endereco')->nullable();
+            $table->string('cidade')->nullable();
+            $table->string('pais')->nullable();
+            $table->string('telefone')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

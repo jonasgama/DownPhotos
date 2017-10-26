@@ -121,7 +121,27 @@
                               </div>
                            </td>
                            <td>
-                              <span>R${{ $file->valor }}</span>
+
+                        @if ($file->situacao === 'ap')
+                          <div class="dropdown" data-toggle="dropdown">
+
+                          <ul>
+                          
+                            <!--<a href="#" data-toggle="popover" data-placement="right" data-content="{{ Auth::user()->email }}" title="{{ Auth::user()->sobrenome }}"><li><span class="glyphicon glyphicon-user" aria-hidden="true"></span>{{ Auth::user()->nome }}</li></a>-->
+                            <a href="#"><li></span>R${{ $file->valor }}</li></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>Valor da Comissão: {{$file->getComissao()}}%</li>          
+                                <li>Valor Líquido: R${{$file->calcComissao($file->valor)}}</li>  
+                            </ul>
+                            
+                          </ul>
+                        </div>
+
+                       @else
+
+                          <span>R${{ $file->valor }}</span>
+
+                        @endif
                            </td>
                            <td>
                               @if($file->situacao === 'ag')
@@ -139,7 +159,17 @@
                               <a href="/fotos/editar/{{ $file->id }}" role="button" data-toggle="modal" class="btn btn-xs btn-default" data-target="#yourModal">Alterar</a>
                            </td>
                            <td>
-                              <a href="/foto/publicar/{{ $file->id }}" data-toggle="modal" data-target="#yourModal" class="btn btn-xs btn-default">Publicar</a>
+
+                              @if($file->situacao === 'ap' )
+
+                                <a href="/foto/publicar/{{ $file->id }}" data-toggle="modal" data-target="#yourModal" class="btn btn-xs btn-default">Resultados</a>
+
+                              @else
+                                  <a href="/foto/publicar/{{ $file->id }}" data-toggle="modal" data-target="#yourModal" class="btn btn-xs btn-default">Publicar</a>
+                              @endif
+                             
+
+                            
                            </td>
                         </tr>
                         @endforeach

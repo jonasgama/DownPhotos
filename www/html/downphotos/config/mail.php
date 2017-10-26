@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => env('MAIL_HOST'),
 
     /*
     |--------------------------------------------------------------------------
@@ -42,7 +42,7 @@ return [
     |
     */
 
-    'port' => env('MAIL_PORT', 587),
+    'port' => env('MAIL_PORT', 2525),
 
     /*
     |--------------------------------------------------------------------------
@@ -55,9 +55,10 @@ return [
     |
     */
 
+ //alterado por rafael gomes
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'moderadordownphotos@gmail.com'),
+        'name' => env('MAIL_FROM_NAME', 'Moderação DownPhotos'),
     ],
 
     /*
@@ -119,5 +120,7 @@ return [
             resource_path('views/vendor/mail'),
         ],
     ],
+
+	'pretend' => false
 
 ];

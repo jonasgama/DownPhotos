@@ -1,76 +1,96 @@
-@extends('layouts.app')
+{{--alterado por rafael gomes--}}
+
+@extends('layouts.master')
+
+@section('title')
+| Nova senha
+@endsection
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Reset Password</div>
 
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+<div class="main-1">
+<h1>Nova senha</h1>
+    <div class="container">
 
-                    <form class="form-horizontal" method="POST" action="{{ route('password.request') }}">
-                        {{ csrf_field() }}
+        <div class="register">
 
-                        <input type="hidden" name="token" value="{{ $token }}">
+            <div class="clearfix"></div>
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+            <div class="register-but">
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ $email or old('email') }}" required autofocus>
+                <form method="POST" action="{{ route('password.request') }}">
+                    {{ csrf_field() }}
 
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                    <input type="hidden" name="token" value="{{ $token }}">
+
+                    <div class="text-center">
+
+                        
+
+                        <p>&nbsp;</p>
+
+                        <div class="register-top-grid">
+
+                            <span>E-mail<label>*</label></span>
+                            <input id="email" type="email" name="email" required>
                         </div>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                            <p>&nbsp;</p>
+                         <div class="register-top-grid">    
+                            <span>Nova senha<label>*</label></span>
+                            <input id="password" type="password" name="password" required>
                         </div>
+                            <p>&nbsp;</p>
+                          <div class="register-top-grid">   
+                            <span>Confirmar senha<label>*</label></span>
+                            <input id="password-confirm" type="password" name="password_confirmation" required>
+                         </div>
+                            <p>&nbsp;</p><p>&nbsp;</p>
 
-                        <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                            <input type="submit" value="Enviar" name="AlterarSenha">
+                            <div class="clearfix"></div>
 
-                                @if ($errors->has('password_confirmation'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+                            <p>&nbsp;</p>
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Reset Password
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                        
+                    </div>
+
+                </form>
+
             </div>
+
         </div>
+
     </div>
+
 </div>
+<style>
+
+
+#email,
+#password,
+#password-confirm {
+    border: 1px solid #EEE;
+    outline-color: #4eaddf;
+    width: 56%;
+    font-size: 1em;
+    padding: 0.5em;
+    -webkit-box-shadow: -9px 10px 5px -4px rgba(0,0,0,0.44);
+    -moz-box-shadow: -9px 10px 5px -4px rgba(0,0,0,0.44);
+    box-shadow: -9px 10px 5px -4px rgba(0,0,0,0.44);
+}
+
+#email:hover,
+#password:hover,
+#password-confirm:hover{
+    border-color: #ee4f4f;
+    transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+}
+
+
+</style>
 @endsection

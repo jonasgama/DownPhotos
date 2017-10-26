@@ -225,9 +225,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f85032', end
   color:#fff;
   text-decoration:none;
 }
-.w3l_header_left ul li a:hover{
-  color:#000;
-}
+
 .w3l_header_right{
   float: right;
 }

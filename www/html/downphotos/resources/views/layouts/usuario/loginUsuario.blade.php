@@ -38,6 +38,7 @@
 								<div class="wow fadeInLeft">
 								<span>Senha<label>*</label></span>
 								<input name="password" type="password" required>
+									<a href="{{ route('password.request') }}">Esqueceu sua senha?</a>
 								</div>
 
 					 	</div>

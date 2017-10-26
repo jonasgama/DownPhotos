@@ -2,20 +2,25 @@
 
 <div class="contact-agile" id="contact">
 			<div class="container">
-			<div class="w3_tittle second"><h3 class="agile-tittle two">Entre em Contato</h3> <div class="line-style second"><span class="second"></span></div></div>
+			
 
 				<div class="contact-middle">
-					<h4>Say Hello</h4>
-					<form action="#" method="post">
+					
+					<form action="/enviamensagem" method="post">
 					<div class="form-agileinfo">
+
+						<h1>Entre em Contato Conosco</h1>
+						<hr>
 						<p>Seu Nome</p>
-						<input type="text" name="your name" placeholder="Digite seu nome" required="" />
+						<input type="text" name="guestname" placeholder="Digite seu nome" required="" />
 						<p>Seu E-mail</p>
-						<input type="email" name="your email" placeholder="Digite seu e-mail" required="" />
+						<input type="email" name="guestemail" placeholder="Digite seu e-mail" required="" />
+						<p>Assunto</p>
+						<input type="text" name="guestsubject" placeholder="Diga o assunto" required />
 					</div>
 					<div class="form-agileits-w3layouts">
 					<p>Mensagem</p>
-						<textarea  name="your message" placeholder="Digite sua Mensagem" required="" ></textarea>
+						<textarea  name="guestmessage" placeholder="Digite sua Mensagem" required="" ></textarea>
 							<input type="submit"   value="Enviar">
 					</div>
 					<div class="clearfix"></div>
@@ -25,20 +30,43 @@
 		</div>
 <style>
 
+
+#contact > div > div.contact-middle > form{
+	background-color: rgba(0, 0, 0, 0.62);
+	border: 10px solid rgba(0, 0, 0, 0.62);
+}
+
 #contact > div > div.w3_tittle.second > h3{
-color:black;
+color:white;
 
 }
 
-#contact > div > div.contact-middle > h4{
-color:black;
+#contact > div > div.contact-middle > h4, #contact > div > div.contact-middle > form > div.form-agileits-w3layouts > p{
+color:white;
 }
 
 #contact > div > div.contact-middle > form > div.form-agileinfo > p{
-color:black;
+color:white;
 }
 #contact > div > div.contact-middle > form > div.form-agileits-w3layouts > textarea{
 	height: 123.988636px;
 }
+#contact > div > div.contact-middle > form > div.form-agileinfo > input[type="email"]:nth-child(4){
+	background-color: #fff;
+	color: #929292;
+    font-size: 11px;
+}
+#contact > div > div.contact-middle > form > div.form-agileinfo > input[type="text"]:nth-child(2){
+	background-color: #fff;
+	color: #929292;
+    font-size: 11px;
+}
+#contact > div > div > form > div.form-agileinfo > h1{
+	color:white;
+}
 
 </style>
+
+
+
+			

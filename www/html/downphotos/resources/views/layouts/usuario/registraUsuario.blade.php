@@ -39,7 +39,7 @@
 							 </div>
 							  <div class="clearfix"> </div>
 						     <div class="register-bottom-grid">
-								    <h3>Informações de Login</h3>
+								
 
 								    	<div class="wow fadeInLeft">
 										<span>Senha<label>*</label></span>

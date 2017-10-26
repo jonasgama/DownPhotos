@@ -24,22 +24,77 @@
       @foreach ($files as $file)
       <div class="box">
          <div class="boxInner">
-            <a href="/galeria/painel/{{ $file->id }}" data-toggle="modal" data-target="#yourModal"><img src="/galeria/preview/{{ $file->id }}/{{ 250 }}" class="media-photo"/></a>
-            <div class="titleBox">{{ $file->apelido }}</div>
+
+             <a data-fancybox="gallery" href="/galeria/preview/{{ $file->id }}/{{0}}"><img src="/galeria/preview/{{ $file->id }}/{{250}}" ></img></a>
+            <div class="titleBox">
+               <a href="#"><span class="glyphicon glyphicon-shopping-cart"></span></a>
+               <h2>R${{ $file->valor }}</h2>
+            </div>
+
          </div>
-      </div>
+                <div class="dropdown" data-toggle="dropdown">
+                    <span class="glyphicon glyphicon-info-sign"></span>
+                          <ul>
+                          
+                            
+                            <ul class="dropdown-menu" role="menu">
+                                 <h1>R${{ $file->valor }}</h1>
+                                 <h2>{{ $file->apelido }}</h2>
+                                 <small>{{ $file->descricao }}</small>
+
+                                 <hr>
+                                    <ul class="list-inline">
+                                       <li>{{$file->imageWidth($file->id)}} x {{$file->imageHeight($file->id)}}|</li>
+                                        <li>{{$file->fileSize($file->id)}} MegaBytes|</li>
+                                        <li>{{$file->imageMime($file->id)}} </li>
+                                    </ul>
+                              </ul>
+                            
+                          </ul>
+               </div>
+         </div>
+
+
       @endforeach
-   </div>
-   <div class="modal fade" id="yourModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
-         <div class="modal-content">                
-         </div>
-      </div>
    </div>
    <div class="text-center">
       {{ $files->links() }}
    </div>
 </div>
-<!--<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>-->
+<style>
+.boxInner > div > a > span{
+   color:white;
+}
+
+</style>
+
+<script>
+
+
+$('body > div.main-1 > div > div.no-touch > div.wrap > div > div.dropdown').on('click', function() {
+
+
+ var className = $(this).children('span').attr('class');
+ console.log(className);
+
+  if(className == 'glyphicon glyphicon-info-sign'){
+     $(this).children('span').removeClass('glyphicon glyphicon-info-sign');
+     $(this).children('span').addClass('glyphicon glyphicon-remove');
+  }
+  else if(className == 'glyphicon glyphicon-remove'){
+     $(this).children('span').removeClass('glyphicon glyphicon-remove');
+     $(this).children('span').addClass('glyphicon glyphicon-info-sign');
+  }
+ 
+   
+});
+
+
+
+
+
+</script>
+
+
 @include('layouts.includes.scriptFancyBox')
 @endsection

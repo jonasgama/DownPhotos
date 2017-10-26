@@ -14,7 +14,7 @@
                                   <li><a href="{{ route('Imagem.filtrarImagem', ['Aprovados']) }}"><span class="hidden-xs hidden-sm">Aprovados</span></a></li> 
                                   <li><a href="{{ route('Imagem.filtrarImagem', ['Reprovados']) }}"><span class="hidden-xs hidden-sm">Reprovados</span></a></li> 
                             </div>
-                        <li><a href="#"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Cadastro</span></a></li>
+                       
                     </ul>
                 </div>
             </div>
