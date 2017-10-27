@@ -50,8 +50,8 @@
 				<div class="navbar-header">
 					<div class="logo">
 						<a href="/">
-						<span>Down Photos</span>
-						<img src="/fotos/secure/Logo.png"/>					
+						<img src="/fotos/secure/Logo2.png"/>
+						
 					</a>
 					</div>
 					
@@ -129,5 +129,9 @@ padding-bottom: 0px;
 	top:8px;
 }
 
+body > div.header-bottom > div > nav > div.navbar-header > div > a > img{
+	    width: 250px;
+    height: 60px;
+}
 </style>
 

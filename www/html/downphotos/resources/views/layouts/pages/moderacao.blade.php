@@ -58,7 +58,7 @@
                                  Enviado em:
                               </th>
                                <th>
-                                
+                                Categoria
                               </th>
                               <th>
                                    
@@ -97,7 +97,7 @@
                                   <a href="#"><li></span>R${{ $imagem->valor }}</li></a>
                                   <ul class="dropdown-menu" role="menu">
                                       <li>Valor da Comissão: {{$imagem->getComissao()}}%</li>          
-                                      <li>Valor Líquido: R${{$imagem->calcComissao($imagem->valor)}}</li>  
+                                      <li>Valor Líquido: R${{$imagem->calcComissaoModerador($imagem->valor)}}</li>  
                                   </ul>
                                   
                                 </ul>
@@ -118,6 +118,16 @@
                            </td>
                              <td>{{$todosUsuarios->find($imagem->user_id)->nome}}</td>
                            <td>{{ $imagem->created_at }}</td>
+                           <td>
+                           @if($imagem->situacao === 'ag')
+                            <select class="field" name="categoria">
+                              <option value=""></option>
+                               @foreach($categorias as $categoria)
+                                <option value="{{$categoria->id}}">{{$categoria->nome}}</option>
+                               @endforeach
+                            </select>
+                           @endif
+                           </td>
                            <td>
                             @if($imagem->deleted_at === Null)
                               @if ($imagem->situacao <> 're')

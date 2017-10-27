@@ -39,6 +39,12 @@ class Imagem extends Model
 
     }
 
+     public function calcComissaoModerador($valor){
+
+        return number_format ( ($valor*$this->getComissao())/100 , 2  );
+
+    }
+
 
     private function imageMake($fotoId){
 
@@ -134,6 +140,18 @@ class Imagem extends Model
 
     }
 
+     public function getSideBarCategoria(){
+
+        return  $archives = \App\Imagem::selectRaw('categoria, count(*) publicados')
+            ->where('deleted_at',Null)
+            ->where('situacao','ap')
+            ->where('categoria','<>', Null)
+            ->groupBy('categoria')
+            ->get()
+            ->toArray();
+
+    }
+
 
     public function getFiltroQuantidadeImagensUsuario($user, $filtro)
     {
@@ -191,5 +209,5 @@ class Imagem extends Model
     }
 
 
-    protected $fillable = ['id', 'nome', 'apelido', 'valor', 'descricao', 'caminho', 'user_id'];
+    protected $fillable = ['id', 'nome', 'apelido', 'valor', 'descricao', 'caminho', 'categoria', 'situacao', 'user_id'];
 }

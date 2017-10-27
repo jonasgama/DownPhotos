@@ -20,9 +20,17 @@ class HomeController extends Controller
     {
 
 
-        $carousel = \App\Imagem::oldest()->take(3)->get();
+        $carousel = \App\Imagem::oldest()
+        ->where('deleted_at', Null)
+        ->where('situacao', 'ap')
+        ->take(3)
+        ->get();
 
-        $miniGaleria = \App\Imagem::latest()->take(11)->get();
+        $miniGaleria = \App\Imagem::latest()
+        ->where('deleted_at', Null)
+        ->where('situacao', 'ap')
+        ->take(5)
+        ->get();
         //dd($carousel->get());
         //11 fotos para a galeria secundári
 

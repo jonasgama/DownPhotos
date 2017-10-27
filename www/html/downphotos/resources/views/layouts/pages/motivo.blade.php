@@ -15,7 +15,7 @@
                      <div class="wow fadeInLeft">
                         <h3>Motivo:</h3>
                         <h5>Justificamos que esta Imagem:</h5>
-                        <input class="nome" id="nome" name="Motivo" type="text" required/>
+                        <input class="nome" id="nome" name="Motivo" placeholder="Complete a frase..." type="text" required/>
                      </div>
 
                   <button class="bluebt" type="submit" value="{{$file->id}}" name="Reprovar">Enviar</button>

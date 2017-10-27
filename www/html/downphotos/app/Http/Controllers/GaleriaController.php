@@ -28,19 +28,26 @@ class GaleriaController extends Controller
             $info =  $info."/" . $year;
         }
 
+        if($categoria = request('categoria')){
+
+           $imagens->where('categoria', $categoria);
+           $info =  "Na categoria: " .  $categoria;
+
+        }
+
          $imagemObj = new \App\Imagem;
          $files = $imagemObj->getFiltroGaleria('ap', $imagens)->paginate(20);
+
          $qt = "Quantidade de fotos: ".$files->count() . " " . $info;
 
-
-
          $archives = $imagemObj->getSideBar();
+         $categorias = $imagemObj->getSideBarCategoria();
 
         //dd($files);
         $request->session()->put('url.intended',url()->full());
 
 
-    	return view('layouts.galeria.galeria', compact('files', 'qt', 'archives'));
+    	return view('layouts.galeria.galeria', compact('files', 'qt', 'archives', 'categorias'));
     }
 
      public function pesquisar(){

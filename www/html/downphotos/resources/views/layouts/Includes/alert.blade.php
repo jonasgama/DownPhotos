@@ -10,16 +10,6 @@
 @endif
 
 
-{{-- alterado por rafael gomes --}}
-@if($flash = session('MensagemErro'))
-
-    <div id="flash" class="alert alert-danger" role="alert">
-
-        {{ $flash }}
-
-    </div>
-        
-@endif
 @if (count($errors))
 
 

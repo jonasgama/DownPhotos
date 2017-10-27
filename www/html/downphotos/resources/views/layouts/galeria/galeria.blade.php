@@ -6,8 +6,9 @@
 <div class="heading">
 <h1>Imagens Publicadas</h1>
 <!--Inserir Menu aqui-->
-@include('layouts.galeria.menu')
+  @include('layouts.galeria.menu')
 <div class="no-touch">
+
    @if(!empty($filtroON))
    <ul class="list-inline">
       <li><a href="/galeria"><span class="glyphicon glyphicon-remove"></span></a> </li>
@@ -60,7 +61,6 @@
    <div class="text-center">
       {{ $files->links() }}
    </div>
-</div>
 <style>
 .boxInner > div > a > span{
    color:white;

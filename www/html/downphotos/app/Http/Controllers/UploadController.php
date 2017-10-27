@@ -86,6 +86,7 @@ class UploadController extends Controller
             'valor' => null,
             'descricao' => null,
             'caminho' => "fotos/".$filePath,
+            'categoria' => null,
             'situacao' => 'nv',
             'user_id' => $userId
 

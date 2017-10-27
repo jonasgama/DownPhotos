@@ -34,9 +34,10 @@ class ModeracaoController extends Controller
           $imagens = \App\Imagem::where('deleted_at', '=', Null)->paginate(5);
       }
 
-     
+      $categorias = \App\categoria::lista();
+      //dd($categorias);
 
-      return view('layouts.pages.moderacao', compact('imagens','todosUsuarios', 'qt'));
+      return view('layouts.pages.moderacao', compact('imagens','todosUsuarios', 'qt', 'categorias'));
 
     }
 
@@ -47,7 +48,8 @@ class ModeracaoController extends Controller
 
       $validatorAprovar = Validator::make($request->all(), [
 
-        'Aprovar' => 'required'
+        'Aprovar' => 'required',
+        'categoria' => 'required'
 
       ]);
 
@@ -89,20 +91,20 @@ class ModeracaoController extends Controller
         'Restaurar' => 'required'
 
       ]);
-       //dd(\Request::all());
+
 
       if (!$validatorAprovar->fails()) {
 
       
 
-       $this->aprovaImagem($request['Aprovar']);
+        $this->aprovaImagem($request);
 
         session()->flash('Mensagem', 'Imagem aprovada com sucesso!!!');
 
         return redirect('/moderacao');
 
       }
-      elseif (!$validatorAlerta->fails()) {
+      else if (!$validatorAlerta->fails()) {
 
 
 
@@ -132,7 +134,7 @@ class ModeracaoController extends Controller
         }
 
       }
-      elseif (!$validatorReprovar->fails()) {
+      else if (!$validatorReprovar->fails()) {
         //dd(\Request::all());
         //$arr = $request->dados;
         try {
@@ -187,7 +189,7 @@ class ModeracaoController extends Controller
 
 
       }
-       else if(!$validatorDeletarPermanentemente->fails()){
+      else if(!$validatorDeletarPermanentemente->fails()){
 
          $this->deletarPermanentemente($request['DeletarPermanentemente']);
          session()->flash('Mensagem', 'Excluído do disco' );
@@ -195,17 +197,12 @@ class ModeracaoController extends Controller
 
 
       }
-      else
-      {
-
-        return back()->withErrors([
-
-          'Função inválida'
-
-        ]);
-
+      else{
+        return back()->withErrors('Erro: Operacao invalida');
+         
       }
-
+    
+     
     }
 
     public function destroy($imagemId)
@@ -234,12 +231,13 @@ class ModeracaoController extends Controller
 
     }
 
-    public function aprovaImagem($imagemId)
+    public function aprovaImagem($request)
     {
 
-      $imagem = Imagem::find($imagemId);
+      $imagem = Imagem::find($request['Aprovar']);
 
       $imagem->situacao = 'ap';
+      $imagem->categoria = \App\categoria::find($request['categoria'])->nome;
 
       $imagem->save();
 
@@ -331,14 +329,14 @@ class ModeracaoController extends Controller
             ]);
        }
        
-
+       $categorias = \App\categoria::lista();
 
        if($filtro == 'Deletadas'){
 
          $qt =  \App\Imagem::where('deleted_at', '<>', Null)->count();
          $filtroON = "Filtrando: ".$info. ", Resultado: " .$qt. " items";
          $imagens =  \App\Imagem::where('deleted_at', '<>', Null)->paginate(5);
-        return view('layouts.pages.moderacao', compact('imagens', 'filtroON', 'todosUsuarios'));
+        return view('layouts.pages.moderacao', compact('imagens', 'filtroON', 'todosUsuarios', 'categorias'));
 
 
        }else{
@@ -347,7 +345,7 @@ class ModeracaoController extends Controller
          $qt =  $imagens->where('situacao', '=', $filtro)->count();
          $filtroON = "Filtrando: ".$info. ", Resultado: " .$qt. " items";
          $imagens =   $imagens->where('situacao', '=', $filtro)->paginate(5);
-        return view('layouts.pages.moderacao', compact('imagens', 'filtroON', 'todosUsuarios'));
+        return view('layouts.pages.moderacao', compact('imagens', 'filtroON', 'todosUsuarios', 'categorias'));
 
        }
        
