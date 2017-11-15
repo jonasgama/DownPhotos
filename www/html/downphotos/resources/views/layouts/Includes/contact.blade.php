@@ -64,6 +64,10 @@ color:white;
 #contact > div > div > form > div.form-agileinfo > h1{
 	color:white;
 }
+#contact > div > div > form > div.form-agileits-w3layouts > textarea{
+	font-size: 20px;
+    color: black;
+}
 
 </style>
 

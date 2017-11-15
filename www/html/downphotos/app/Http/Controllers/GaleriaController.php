@@ -40,7 +40,7 @@ class GaleriaController extends Controller
 
          $qt = "Quantidade de fotos: ".$files->count() . " " . $info;
 
-         $archives = $imagemObj->getSideBar();
+         $archives = $this->archives($imagemObj);
          $categorias = $imagemObj->getSideBarCategoria();
 
         //dd($files);
@@ -48,6 +48,11 @@ class GaleriaController extends Controller
 
 
     	return view('layouts.galeria.galeria', compact('files', 'qt', 'archives', 'categorias'));
+    }
+
+    private function archives($imagemObj){
+
+      return $archives = $imagemObj->getSideBar();
     }
 
      public function pesquisar(){
@@ -63,7 +68,15 @@ class GaleriaController extends Controller
 
        if (!$validatorPesquisar->fails()) {
 
-       	$imagens = \App\Imagem::latest();
+      $imagens = \App\Imagem::latest();
+
+      //
+
+         $imagemObj = new \App\Imagem;
+         $archives = $this->archives($imagemObj);
+         $categorias = $imagemObj->getSideBarCategoria();
+
+      //
 
     	$fotos = $imagens->where('situacao', '=', 'ap');
 
@@ -85,7 +98,7 @@ class GaleriaController extends Controller
 
        }
 
-      return view('layouts.galeria.galeria', compact('user', 'files', 'filtroON'));
+      return view('layouts.galeria.galeria', compact('user', 'files', 'filtroON', 'archives', 'categorias'));
 
 
     }
