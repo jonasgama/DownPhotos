@@ -170,6 +170,8 @@ class ImagemController extends Controller
      
       $file->deleted_at = \Carbon\Carbon::now();
 
+      $file->save();
+
       session()->flash('Mensagem', 'Arquivo excluído com sucesso' );
 
        return redirect()->back();

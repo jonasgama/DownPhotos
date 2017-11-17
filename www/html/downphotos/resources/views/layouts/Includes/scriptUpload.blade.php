@@ -28,6 +28,7 @@
                 console.log("reload page");
                 //window.location.reload();
                 //location.href="envio";
+                setInterval(function(){ window.location.reload(); }, 3000);
               }
             
             }
@@ -68,7 +69,7 @@
              
           })
           .bind('fileuploadprogressall', function (e, data) {
-            setInterval(function(){ window.location.reload(); }, 3000);
+            
               
           });
     

@@ -136,7 +136,7 @@ class GaleriaController extends Controller
                            if($resize == 250){
 
                              return $image->insert($watermark, 'center')
-                           ->encode('data-url',0)
+                           ->encode('jpg',0)
                            ->orientate()
                            ->resize($resize, $resize)
                            ->response();
@@ -146,7 +146,7 @@ class GaleriaController extends Controller
 
                            if($resize == 0){
                             return $image->insert($watermark, 'center')
-                           ->encode('data-url',0)
+                           ->encode('jpg',0)
                            ->orientate()
                            ->response();
                            
@@ -164,7 +164,7 @@ class GaleriaController extends Controller
                         if($resize == 250){
 
                              return $image->insert($watermark, 'center')
-                           ->encode('data-url',0)
+                           ->encode('jpg',0)
                            ->resize($resize, $resize)
                            ->response();
 
@@ -173,7 +173,7 @@ class GaleriaController extends Controller
 
                            if($resize == 0){
                             return $image->insert($watermark, 'center')
-                           ->encode('data-url',0)
+                           ->encode('jpg',0)
                            ->response();
                            
                            }

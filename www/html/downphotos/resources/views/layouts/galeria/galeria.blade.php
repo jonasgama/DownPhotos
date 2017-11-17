@@ -28,7 +28,9 @@
 
              <a data-fancybox="gallery" href="/galeria/preview/{{ $file->id }}/{{0}}"><img src="/galeria/preview/{{ $file->id }}/{{250}}" ></img></a>
             <div class="titleBox">
-               <a href="#"><span class="glyphicon glyphicon-shopping-cart"></span></a>
+               
+               <a href="javascript:void(0)"><span class="glyphicon glyphicon-shopping-cart"></span></a>
+               <input type="hidden" value="{{ $file->id }}">
                <h2>R${{ $file->valor }}</h2>
             </div>
 
@@ -89,6 +91,26 @@ $('body > div.main-1 > div > div.no-touch > div.wrap > div > div.dropdown').on('
    
 });
 
+$('body > div.main-1 > div > div.no-touch > div.wrap > div > div.boxInner > div > a').on('click', function(e) {
+e.preventDefault(); 
+
+console.log("ok");
+var idImg = $(this).siblings('input[type=hidden]').val();
+console.log(idImg);
+$.ajax({
+         url:"/carrinho",
+         type: 'POST',
+         dataType: 'json',
+         data: {id : idImg},
+         success:function(dados){            
+            console.log(dados);
+         },
+         error:function(){
+             alert("Error");
+         }      
+    }); 
+   
+});
 
 
 
