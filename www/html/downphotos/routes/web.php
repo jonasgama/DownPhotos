@@ -75,12 +75,11 @@ Route::delete('/carrinho', ['as' => 'carrinho.delete', 'uses' => 'PedidoControll
 
 
 
-
+//alterado por juliana
 Route::get('/carrinho', ['as' => 'carrinho', 'uses' => 'PedidoController@index']);
 Route::get('/carrinho/obterProdutos', ['as' => 'carrinho.obterProdutos', 'uses' => 'PedidoController@obterProdutos']);
 Route::post('/carrinho', ['as' => 'carrinho.incluir', 'uses' => 'PedidoController@incluir']);
 Route::delete('/carrinho', ['as' => 'carrinho.delete', 'uses' => 'PedidoController@remover']);
-//alterado por juliana
 Route::get('/pedido', ['as' => 'pedido', 'uses' => 'PedidoController@salvar'])->middleware('naoLogado');
 Route::get('/itens/{id}/salvar', ['as' => 'itens.salvar', 'uses' => 'ItemPedidoController@salvar'])->middleware('naoLogado');
 Route::get('/pagamento', ['as' => 'pagamento', 'uses' => 'PagamentoController@index'])->middleware('naoLogado');

@@ -1,12 +1,12 @@
 $(document).ready(function() {
-	var carrinho = $.cookie('carrinho');
+	//var carrinho = $.cookie('carrinho');
 
-	if (carrinho == undefined) {
-		carrinho = {};
-	}
-	else {
-		carrinho = JSON.parse(JSON.parse(carrinho));
-	}
+	//if (carrinho == undefined) {
+	//	carrinho = {};
+	//}
+	//else {
+	//	carrinho = JSON.parse(JSON.parse(carrinho));
+	//}
 
 /*	$.ajaxSetup({
         headers: {

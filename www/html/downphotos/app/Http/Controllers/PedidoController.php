@@ -32,6 +32,7 @@ class PedidoController extends Controller
         array_push($carrinho, $request->id);                
         session(['carrinho' => $carrinho]);
 
+        
         return response()->json($carrinho);
     }
 

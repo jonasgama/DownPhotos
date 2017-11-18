@@ -25,7 +25,7 @@
 					<a href="/usuario"><li><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Entrar</li></a>
 					<a href="/registro"><li><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Criar Conta</li></a>	
 					@endif	
-
+					<a href="/carrinho"><li><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><span class="orange-circle-greater-than" id="chart" onload="myChart()"></span></li></a>	
 				</ul>
 			  </div>
 			</div>
@@ -106,6 +106,20 @@ $(document).ready(function(){
          $('.dropdown-menu',this).toggle();
      })
 });
+
+$(document).ready(function(){
+
+
+myChart();
+
+
+function myChart(){
+	document.getElementById('chart').innerHTML = "<?php echo count(Session('carrinho'))?>";	
+}
+
+});
+
+
 </script>
 
 <style>
