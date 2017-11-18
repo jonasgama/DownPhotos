@@ -51,30 +51,43 @@
    </div>
 </div>
 <!-- //work -->
+
+
+
+
+
 <!-- gallery -->
 <div class="gallery" id="gallery">
    <div class="w3_tittle second two">
       <a href="/galeria"><h3 class="agile-tittle two gal">Ir para Galeria</h3></a>
       <div class="line-style second"><span class="second"></span></div>
    </div>
-   <div class="w3-agile-top-info">
       <div class="agileits_work_grids">
          <ul id="flexiselDemo1">
          @foreach($miniGaleria as $i)
          <li>
             <div class="agileits_work_grid view view-sixth">
                <div class="grid">
-                  <figure class="effect-roxy">
-                     <img src="/galeria/preview/{{$i->id}}/{{0}}" alt="" />
-                  </figure>
+                  <img src="/galeria/preview/{{$i->id}}/{{0}}" alt="" />             
                </div>
             </div>
          </li>
          @endforeach
       </ul>
       </div>
-   </div>
+
 </div>
+
+
+<style>
+#flexiselDemo1 > li > div > div > img{
+
+width: 306.5px;
+height: 300px;
+
+}
+
+</style>
 <!-- //gallery -->
 <!-- //services -->
 @include('layouts.includes.scriptsIndex')
