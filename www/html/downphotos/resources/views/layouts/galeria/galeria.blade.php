@@ -105,32 +105,16 @@ $('body > div.main-1 > div > div.no-touch > div.wrap > div > div.dropdown').on('
 });
 
 
-//interação com o icone do carrinho
-$('body > div.main-1 > div > div.no-touch > div.wrap > div > div.boxInner > div > a > span').on('click', function() {
-
-
- var className = $(this).attr('class');
- console.log(className);
-
-  if(className == 'glyphicon glyphicon-shopping-cart'){
-     $(this).removeClass('glyphicon glyphicon-shopping-cart');
-     $(this).addClass('glyphicon glyphicon-ok');
-     console.log($(this).attr('class'));
-  }
-
-
-   
-});
-
-
-
-
 //armazena as ids enviadas ao carrinho
 $('body > div.main-1 > div > div.no-touch > div.wrap > div > div.boxInner > div > a').on('click', function(e) {
 e.preventDefault(); 
 
+console.log($(this).children('span').attr('class'));
+  if($(this).children('span').attr('class') == "glyphicon glyphicon-shopping-cart")
+  {
 
-if($(this).children('span').attr('class') == "glyphicon glyphicon-shopping-cart"){
+    $(this).children('span').removeClass('glyphicon glyphicon-shopping-cart');
+     $(this).children('span').addClass('glyphicon glyphicon-ok');
 
       console.log("ok");
       var idImg = $(this).siblings('input[type=hidden]').val();
@@ -149,11 +133,9 @@ if($(this).children('span').attr('class') == "glyphicon glyphicon-shopping-cart"
                }      
           }); 
          
-      });
+  }
+});
 
-
-  
-}
 
 
 
